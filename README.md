@@ -111,3 +111,11 @@ php artisan migrate
 ```
 php artisan migrate:fresh
 ```  
+
+> without losing table data modify table
+- create new migration file  
+
+*terminal:*
+```
+php artisan make:migration add_favorite_color_column
+```
