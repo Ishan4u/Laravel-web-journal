@@ -1,4 +1,7 @@
 <?php
 
-$name = "ishan";
-echo 'My name is ' . $name . " that is truth. ";
+function doubleMe($x){
+    return $x * 2 ;
+}
+
+echo doubleMe(10);
