@@ -9,9 +9,9 @@ class ExamplerController extends Controller
     public function homepage() {
         // imagine we loaded data from the database
         $ourname = 'ishan';
-
+        $animals = ['cat', 'dog', 'cow']; //array
         
-        return view('homepage', ['name' => $ourname, 'catname' => 'Nachu']);
+        return view('homepage', ['allAnimals' => $animals, 'name' => $ourname, 'catname' => 'Nachu']);
     }
 
     public function aboutPage() {

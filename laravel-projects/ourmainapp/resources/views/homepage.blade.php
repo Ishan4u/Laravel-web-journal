@@ -13,6 +13,12 @@
     <h3> {{ $name }} </h3>
     <h4> {{ $catname }} </h4>
 
+    <ul>
+        @foreach ($allAnimals as $animal)
+            <li> {{$animal}} </li>
+        @endforeach
+    </ul>
+
     <a href="/about"> Go to the about page</a>
 </body>
 </html>

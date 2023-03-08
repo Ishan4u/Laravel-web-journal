@@ -79,6 +79,21 @@ php artisan make:controller ExamplerController
 blade = template engine  
 > blade directive ` {{ }} `
 - used for php dynammic flexiblity
-- The {{ }} directive is used to print out the value of a variable or the result of an expression in the HTML code.
+- The {{ }} directive is used to print out the value of a variable or the result of an expression in the HTML code.  
 
+> blade directive `@`
+- *several Blade directives that start with* "@" symbol
+1. `@if, @elseif, and @else`: Used to conditionally display content based on a given condition.
+
+2. `@foreach`: Used to loop over an array or collection of data and output the values.
+
+3. `@switch and @case`: Used to implement switch-case logic in your templates.
+
+4. `@include`: Used to include a sub-view within your main view.
+
+5. `@extends`: Used to define a template that can be extended by other views.
+
+6. `@yield`: Used to define a section in a template that can be replaced by a child view.
+
+7. `@section and @endsection`: Used to define a named section in a view that can be used in a parent template with the @yield directive.
 
