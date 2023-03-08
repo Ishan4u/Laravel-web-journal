@@ -69,6 +69,9 @@ composer create-project laravel/laravel ourfirstapp
 php artisan serve
 ```  
 
-> 
-
+> Controller
+*create controller*
+```
+php artisan make:controller ExamplerController
+```
 
