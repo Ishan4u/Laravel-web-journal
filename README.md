@@ -97,3 +97,5 @@ blade = template engine
 
 7. `@section and @endsection`: Used to define a named section in a view that can be used in a parent template with the @yield directive.
 
+> Adding css 
+- past css file to public folder
