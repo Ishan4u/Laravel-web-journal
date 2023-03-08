@@ -28,4 +28,14 @@ brew install composer
 ```  
 
 ## use composer
-`composer require cocur/slugify`
+`composer require cocur/slugify`  
+
+> Reference  
+[autoloading & Namespaces in PHP](https://www.daggerhartlab.com/autoloading-namespaces-in-php/)
+
+# object operator (->)
+> It is used to access methods and properties of an object.
+> - In object-oriented programming, objects are instances of a class, which is a blueprint or a template for creating objects. When you create an object from a class, you can access its properties (variables) and methods (functions) using the object operator "->".
+> - same as dot(.)
+
+
