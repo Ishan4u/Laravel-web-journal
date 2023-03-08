@@ -38,6 +38,23 @@ brew install composer
 > - In object-oriented programming, objects are instances of a class, which is a blueprint or a template for creating objects. When you create an object from a class, you can access its properties (variables) and methods (functions) using the object operator "->".
 > - same as dot(.)
 
+# Scope Resolution Operator (::)
+> It is used to access static methods, static properties, and constants of a class without creating an instance of the class.
+
+*Here are some common uses of the double colon in PHP:*  
+1. Accessing a static method of a class: `ClassName::staticMethodName()`
+2. Accessing a static property of a class: `ClassName::$staticPropertyName`
+3. Accessing a constant of a class: `ClassName::CONSTANT_NAME`
+
+# HTTP request methods 
+- GET
+> This method is used to request a resource from a web server
+- POST
+> This method is used to submit data to be processed by a web server
+- PUT
+- DELETE
+- PATCH
+
 # Laravel
 > Create project:  
 > `composer create-project AuthorName/nameOftheProject nameOFfolder`
@@ -51,4 +68,7 @@ composer create-project laravel/laravel ourfirstapp
 ```
 php artisan serve
 ```  
+
+> 
+
 
