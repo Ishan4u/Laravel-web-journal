@@ -14,6 +14,7 @@ echo 'My name is ' . $name . " that is truth. ";
 # Vs code
 `ctrl + ,` = setting
 `ctrl + p` =easily navigate files
+install extension `php namespace resolver`
 
 # Run on browser (testing)
 `php -S localhost:8000`
@@ -127,3 +128,8 @@ php artisan make:migration add_favorite_color_column
 php artisan make:controller userController
 ```
 >> loclation: [app/Http/Controllers/userController.php] 
+
+# Commit References
+> Conect html frontend form to Database Step2  
+- intro about validate
+- intro about Models
