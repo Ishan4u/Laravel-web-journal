@@ -119,3 +119,11 @@ php artisan migrate:fresh
 ```
 php artisan make:migration add_favorite_color_column
 ```
+
+> Create Controller  
+
+*terminal:*
+```
+php artisan make:controller userController
+```
+>> loclation: [app/Http/Controllers/userController.php] 
