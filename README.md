@@ -100,3 +100,14 @@ blade = template engine
 
 > Adding css 
 - past css file to public folder
+
+# Database
+> code:
+```
+php artisan migrate
+```
+> update table
+- drop all the table and recreate freshly
+```
+php artisan migrate:fresh
+```  
