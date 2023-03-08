@@ -14,5 +14,5 @@ echo 'My name is ' . $name . " that is truth. ";
 # Vs code
 `ctrl + ,` = setting
 
-# Run on browser
+# Run on browser (testing)
 `php -S localhost:8000`
