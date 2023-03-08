@@ -69,9 +69,16 @@ composer create-project laravel/laravel ourfirstapp
 php artisan serve
 ```  
 
-> Controller
+## Controller
 *create controller*
 ```
 php artisan make:controller ExamplerController
 ```
+
+## View
+blade = template engine  
+> blade directive ` {{ }} `
+- used for php dynammic flexiblity
+- The {{ }} directive is used to print out the value of a variable or the result of an expression in the HTML code.
+
 
