@@ -38,4 +38,12 @@ brew install composer
 > - In object-oriented programming, objects are instances of a class, which is a blueprint or a template for creating objects. When you create an object from a class, you can access its properties (variables) and methods (functions) using the object operator "->".
 > - same as dot(.)
 
+# Laravel
+> Create project:  
+> `composer create-project AuthorName/nameOftheProject nameOFfolder`
+
+*Ex syntex:*
+```
+composer create-project laravel/laravel ourfirstapp
+```
 
