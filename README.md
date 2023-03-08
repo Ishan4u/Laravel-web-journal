@@ -11,4 +11,8 @@
 $name = "ishan";
 echo 'My name is ' . $name . " that is truth. ";
 ```
-# 
+# Vs code
+`ctrl + ,` = setting
+
+# Run on browser
+`php -S localhost:8000`
