@@ -46,4 +46,9 @@ brew install composer
 ```
 composer create-project laravel/laravel ourfirstapp
 ```
+---  
+> start a local development server :
+```
+php artisan serve
+```  
 
