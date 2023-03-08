@@ -26,4 +26,6 @@ echo 'My name is ' . $name . " that is truth. ";
 ```
 brew install composer
 ```  
-# 
+
+## use composer
+`composer require cocur/slugify`
