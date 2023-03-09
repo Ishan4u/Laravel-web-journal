@@ -21,3 +21,4 @@ Route::get('/', [ExamplerController::class, "homepage"]);
 Route::get('/about', [ExamplerController::class, "aboutPage"]);
 
 Route::post('/register', [userController::class, 'register']);
+Route::post('/login', [userController::class, 'login']);

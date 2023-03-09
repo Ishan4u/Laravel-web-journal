@@ -8,6 +8,20 @@ use App\Models\User; //Models perform crud oparation and relationships
 
 class userController extends Controller
 {
+
+    public function login(Request $request) {
+        $incomingFields = $request->validate([
+            'loginusername' => 'required',
+            'loginpassword' => 'required'
+        ]);
+
+        if(auth()->attempt(['username' => $incomingFields['loginusername'], 'password' => $incomingFields['loginpassword']])) {
+            return 'Congrates!!!';
+        } else {
+            return 'Sorry!!!';
+        }
+    }
+
     public function register(Request $request) {
         $incomingField = $request->validate([
             'username' => ['required', 'min:4', 'max:20', Rule::unique('users', 'username') ],
