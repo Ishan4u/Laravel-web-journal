@@ -79,6 +79,8 @@ php artisan make:controller ExamplerController
 
 ## View
 blade = template engine  
+- lern more about this
+
 > blade directive ` {{ }} `
 - used for php dynammic flexiblity
 - The {{ }} directive is used to print out the value of a variable or the result of an expression in the HTML code.  
@@ -153,6 +155,16 @@ php artisan make:controller userController
 4. Ensuring secure coding practices: Developers should ensure that their code is secure, and avoid any vulnerabilities that could be exploited by attackers.
 
 By implementing these measures, developers can greatly reduce the risk of CSRF attacks and ensure the security of their users' data.
+
+## with(a,b)
+- a = type of message
+- b = actual text user see
+
+## session()
+> learn more about this
+
+## has()
+> learn more about this
 
 # Commit References
 > Conect html frontend form to Database Step2  
