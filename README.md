@@ -140,7 +140,19 @@ php artisan make:controller userController
 > this showing logged user name
 
 ## csrf
+>CSRF (Cross-Site Request Forgery) is a type of security vulnerability that occurs when a malicious actor tricks a user into performing an action on a website without their knowledge or consent. This is usually achieved by sending a request to a website that the user is currently logged into, using the user's existing session cookie.
 
+> To prevent CSRF attacks, web developers can implement several measures, including:
+
+1. Implementing CSRF tokens: A unique token is generated for each user session and included in the HTML form or request. When the form is submitted or the request is made, the server verifies that the token is correct before executing the action.
+
+2. Implementing SameSite cookies: SameSite cookies restrict the cookies to being sent only to the same domain as the website that set the cookie. This can prevent CSRF attacks from external websites.
+
+3. Using HTTP headers: The CSRF token can also be included in the HTTP header of the request, rather than in the HTML form.
+
+4. Ensuring secure coding practices: Developers should ensure that their code is secure, and avoid any vulnerabilities that could be exploited by attackers.
+
+By implementing these measures, developers can greatly reduce the risk of CSRF attacks and ensure the security of their users' data.
 
 # Commit References
 > Conect html frontend form to Database Step2  
