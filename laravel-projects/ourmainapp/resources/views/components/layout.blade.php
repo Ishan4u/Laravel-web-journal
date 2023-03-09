@@ -58,6 +58,14 @@
     </div>
     @endif
 
+    @if(session()->has('failure'))
+    <div class="container container--narrow">
+      <div class="alert alert-danger text-center">
+        {{session('failure')}}
+      </div>
+    </div>
+    @endif
+
 {{$slot}}
 
     <!-- footer begins -->

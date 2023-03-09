@@ -32,7 +32,7 @@ class userController extends Controller
             $request->session()->regenerate();
             return redirect('/')->with('success', 'You are now logged in');
         } else {
-            return 'Sorry!!!';
+            return redirect('/')->with('failure', 'Invalid login.');
         }
     }
 
