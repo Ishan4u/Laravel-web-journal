@@ -16,6 +16,7 @@ class userController extends Controller
         ]);
 
         if(auth()->attempt(['username' => $incomingFields['loginusername'], 'password' => $incomingFields['loginpassword']])) {
+            $request->session()->regenerate();
             return 'Congrates!!!';
         } else {
             return 'Sorry!!!';

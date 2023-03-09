@@ -133,6 +133,9 @@ php artisan make:controller userController
 - a = table in the database
 - b = field or collumn
 
+## $request->session()->regenerate();
+> learn more about this
+
 # Commit References
 > Conect html frontend form to Database Step2  
 - intro about validate
