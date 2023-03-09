@@ -136,6 +136,9 @@ php artisan make:controller userController
 ## $request->session()->regenerate();
 > learn more about this
 
+## auth()->user()->username
+> this showing logged user name
+
 # Commit References
 > Conect html frontend form to Database Step2  
 - intro about validate

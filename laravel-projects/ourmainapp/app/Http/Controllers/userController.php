@@ -11,7 +11,7 @@ class userController extends Controller
 
     public function showCorrectHomepage() {
         if(auth()->check()) {
-            return 'you are logged in';
+            return view('homepage-feed');
         } else {
             return view('homepage');
         }
