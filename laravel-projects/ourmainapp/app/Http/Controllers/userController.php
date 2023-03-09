@@ -9,6 +9,14 @@ use App\Models\User; //Models perform crud oparation and relationships
 class userController extends Controller
 {
 
+    public function showCorrectHomepage() {
+        if(auth()->check()) {
+            return 'you are logged in';
+        } else {
+            return view('homepage');
+        }
+    }
+
     public function login(Request $request) {
         $incomingFields = $request->validate([
             'loginusername' => 'required',
