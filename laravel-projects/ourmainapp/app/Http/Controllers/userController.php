@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User; //Models perform crud oparation and relationships
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use App\Models\User; //Models perform crud oparation and relationships
 
 class userController extends Controller
 {
     public function register(Request $request) {
         $incomingField = $request->validate([
-            'username' => 'required',
-            'email' => 'required',
-            'password' => 'required'
+            'username' => ['required', 'min:4', 'max: 20', Rule::unique('users', 'username') ],
+            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'password' => ['required', 'min:8', 'confirmed']
         ]);
         User::create($incomingField);
         return 'Hello from register function';

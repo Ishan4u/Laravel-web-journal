@@ -129,6 +129,10 @@ php artisan make:controller userController
 ```
 >> loclation: [app/Http/Controllers/userController.php] 
 
+## Rule::unique(a,b)
+- a = table in the database
+- b = field or collumn
+
 # Commit References
 > Conect html frontend form to Database Step2  
 - intro about validate
