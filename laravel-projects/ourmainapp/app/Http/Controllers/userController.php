@@ -9,6 +9,11 @@ use App\Models\User; //Models perform crud oparation and relationships
 class userController extends Controller
 {
 
+    public function logout() {
+        auth()->logout();
+        return 'You are now logged out';
+    }
+
     public function showCorrectHomepage() {
         if(auth()->check()) {
             return view('homepage-feed');

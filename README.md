@@ -139,6 +139,9 @@ php artisan make:controller userController
 ## auth()->user()->username
 > this showing logged user name
 
+## csrf
+
+
 # Commit References
 > Conect html frontend form to Database Step2  
 - intro about validate
