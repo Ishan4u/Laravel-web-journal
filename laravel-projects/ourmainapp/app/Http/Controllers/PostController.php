@@ -22,9 +22,9 @@ class PostController extends Controller
         $incomingFields['body'] = strip_tags($incomingFields['body']);
         $incomingFields['user_id'] = auth()->id();
 
-        Post::create($incomingFields);
+        $newPost = Post::create($incomingFields);
         
-        return 'hii';
+        return redirect("/post/{$newPost->id}")->with('success', 'New post successfully created');
     }
 
     public function showCreateForm() {
