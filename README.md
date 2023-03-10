@@ -138,6 +138,11 @@ php artisan make:controller userController
 > onDelete();
 #learnmore
 
+> belongsTo(a, b);
+- a = the class blog post belongsto
+- b = collumn name poweredby
+#learnmore
+
 ## Rule::unique(a,b)
 - a = table in the database
 - b = field or collumn
