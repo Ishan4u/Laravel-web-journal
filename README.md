@@ -104,6 +104,9 @@ blade = template engine
 > Adding css 
 - past css file to public folder
 
+> Str::markdown();  
+#learnmore
+
 # Database
 > code:
 ```
@@ -136,6 +139,15 @@ php artisan make:controller userController
 #learnmore
 
 > onDelete();
+#learnmore
+
+> {!! !!}  
+#learnmore
+
+> strip_tags(a,b);  
+```
+strip_tags(Str::markdown($post->body), '<p><ul><ol><li><strong><em><h3><br>
+```
 #learnmore
 
 > belongsTo(a, b);
