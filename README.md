@@ -131,6 +131,13 @@ php artisan make:controller userController
 ```
 >> loclation: [app/Http/Controllers/userController.php] 
 
+> constrained();
+- intergrity check
+#learnmore
+
+> onDelete();
+#learnmore
+
 ## Rule::unique(a,b)
 - a = table in the database
 - b = field or collumn
@@ -169,8 +176,23 @@ By implementing these measures, developers can greatly reduce the risk of CSRF a
 # Create blog post Steps:
 1. Go Routes file (web.php)
 - create Route
-2. Create Controller
+2. Create Controller (PostController)
+```
+php artisan make:controller PostController
+```
+3. Create function (showCreateForm)
+4. Create Views
+- create-post.blade.php
+5. Make Database  
 
+*define*
+```
+php artisan make:migration create_posts_table
+```
+*Excute and create databse*
+```
+php artisan migrate
+```
 
 # Commit References
 > Conect html frontend form to Database Step2  
