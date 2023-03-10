@@ -23,4 +23,3 @@ Route::post('/login', [userController::class, 'login']);
 Route::post('/logout', [userController::class, 'logout']);
 
 // Blog post related routes
-Route

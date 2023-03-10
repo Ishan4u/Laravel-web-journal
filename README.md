@@ -166,6 +166,12 @@ By implementing these measures, developers can greatly reduce the risk of CSRF a
 ## has()
 > learn more about this
 
+# Create blog post Steps:
+1. Go Routes file (web.php)
+- create Route
+2. Create Controller
+
+
 # Commit References
 > Conect html frontend form to Database Step2  
 - intro about validate
