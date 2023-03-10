@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     //
-    public function viewSinglePost($ironman) {
-        return $ironman;
+    public function viewSinglePost(Post $pizza) {
+        return $pizza->title;
         // return view('single-post');
     }
 
