@@ -26,4 +26,4 @@ Route::post('/logout', [userController::class, 'logout']);
 // Blog post related routes
 Route::get('/create-post', [PostController::class, 'showCreateForm']);
 Route::post('/create-post', [PostController::class, 'storeNewPost']);
-Route::get('/post/{pizza}', [PostController::class, 'viewSinglePost']);
+Route::get('/post/{post}', [PostController::class, 'viewSinglePost']);
