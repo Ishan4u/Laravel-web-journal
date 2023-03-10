@@ -21,9 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [userController::class, "showCorrectHomepage"])->name('login');
 Route::post('/register', [userController::class, 'register'])->middleware('guest');
 Route::post('/login', [userController::class, 'login'])->middleware('guest');
-Route::post('/logout', [userController::class, 'logout'])->middleware('auth');
+Route::post('/logout', [userController::class, 'logout'])->middleware('mustBeLoggedIn');
 
 // Blog post related routes
-Route::get('/create-post', [PostController::class, 'showCreateForm'])->middleware('auth');
-Route::post('/create-post', [PostController::class, 'storeNewPost'])->middleware('auth');
+Route::get('/create-post', [PostController::class, 'showCreateForm'])->middleware('mustBeLoggedIn');
+Route::post('/create-post', [PostController::class, 'storeNewPost'])->middleware('mustBeLoggedIn');
 Route::get('/post/{post}', [PostController::class, 'viewSinglePost']);

@@ -190,6 +190,13 @@ By implementing these measures, developers can greatly reduce the risk of CSRF a
 ## has()
 > learn more about this
 
+# middleware
+> create middleware  
+**terminal: ** 
+```
+php artisan make:middleware MustBeLoggedIn
+```
+
 # Create blog post Steps:
 1. Go Routes file (web.php)
 - create Route
