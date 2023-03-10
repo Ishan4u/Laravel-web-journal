@@ -9,8 +9,9 @@ use App\Models\User; //Models perform crud oparation and relationships
 class userController extends Controller
 {
 
-    public function profile() {
-        return view('profile-posts');
+    public function profile(User $ishan) {
+
+        return view('profile-posts', ['username' => $ishan->username]);
     }
 
     public function logout() {
