@@ -9,6 +9,10 @@ use App\Models\User; //Models perform crud oparation and relationships
 class userController extends Controller
 {
 
+    public function profile() {
+        return view('profile-posts');
+    }
+
     public function logout() {
         auth()->logout();
         return redirect('/')->with('success', 'You are now logged out.');

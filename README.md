@@ -209,6 +209,35 @@ php artisan make:controller PostController
 - create-post.blade.php
 5. Make Database  
 
+# User Profile Steps
+1. Routes file (web.php)  
+    > 1. Create Route
+    > - Go to routes (web.php)
+    ```
+    Route::get('/profile/{ishan}', [userController::class, 'profile']);
+    ```
+    > get(a, b);
+    > - a = url
+    > - b = function   
+    ---   
+    2. Controllers file   
+    > 1. Create Function 
+    > -  Go to UserController.php (Controllers)  
+
+    *profile*
+    ```
+    public function profile() {
+        return view('profile-posts');
+    }
+    ```  
+    ---  
+    3. views file
+    > 1. Create new file  
+    > - profile-posts.blade.php
+
+
+
+
 *define*
 ```
 php artisan make:migration create_posts_table
