@@ -12,17 +12,17 @@ $name = "ishan";
 echo 'My name is ' . $name . " that is truth. ";
 ```
 # Vs code
-`ctrl + ,` = setting
-`ctrl + p` =easily navigate files
+`ctrl + ,` = setting  
+`ctrl + p` =easily navigate files  
 install extension `php namespace resolver`
 
-# Run on browser (testing)
+# Run php on browser (testing)
 `php -S localhost:8000`
 
 # Composer
-> same like npm in nodejs
-> - A Dependency Manager for PHP
-> - pull all over dependencies  
+- same like npm in nodejs
+- A Dependency Manager for PHP
+- pull all over dependencies  
 
 *install:*  
 ```
@@ -36,12 +36,12 @@ brew install composer
 [autoloading & Namespaces in PHP](https://www.daggerhartlab.com/autoloading-namespaces-in-php/)
 
 # object operator (->)
-> It is used to access methods and properties of an object.
-> - In object-oriented programming, objects are instances of a class, which is a blueprint or a template for creating objects. When you create an object from a class, you can access its properties (variables) and methods (functions) using the object operator "->".
-> - same as dot(.)
+ It is used to access methods and properties of an object.
+ - In object-oriented programming, objects are instances of a class, which is a blueprint or a template for creating objects. When you create an object from a class, you can access its properties (variables) and methods (functions) using the object operator "->".
+ - same as dot(.)
 
 # Scope Resolution Operator (::)
-> It is used to access static methods, static properties, and constants of a class without creating an instance of the class.
+- It is used to access static methods, static properties, and constants of a class without creating an instance of the class.
 
 *Here are some common uses of the double colon in PHP:*  
 1. Accessing a static method of a class: `ClassName::staticMethodName()`
@@ -61,31 +61,33 @@ brew install composer
 > Create project:  
 > `composer create-project AuthorName/nameOftheProject nameOFfolder`
 
-*Ex syntex:*
+*Example syntex:*
 ```
 composer create-project laravel/laravel ourfirstapp
 ```
 ---  
-> start a local development server :
+## start a local development server
+*Terminal command :*
 ```
 php artisan serve
 ```  
 
 ## Controller
-*create controller*
+*create controller command :*
 ```
 php artisan make:controller ExamplerController
 ```
 
 ## View
-blade = template engine  
-- lern more about this
+- blade = template engine  
+#learnmore
 
-> blade directive ` {{ }} `
+### blade directive ` {{ }} `
+---
 - used for php dynammic flexiblity
 - The {{ }} directive is used to print out the value of a variable or the result of an expression in the HTML code.  
 
-> blade directive `@`
+### blade directive `@`
 - *several Blade directives that start with* "@" symbol
 1. `@if, @elseif, and @else`: Used to conditionally display content based on a given condition.
 
@@ -101,101 +103,119 @@ blade = template engine
 
 7. `@section and @endsection`: Used to define a named section in a view that can be used in a parent template with the @yield directive.
 
-> Adding css 
+### Adding css 
+---
 - past css file to public folder
 
-> Str::markdown();  
-#learnmore
+- Str::markdown();   
+     #learnmore 
 
 # Database
-> code:
+
+## Create databse
+---
+*command:*
 ```
 php artisan migrate
 ```
-> update table
-- drop all the table and recreate freshly
+## update table  
+---  
+### 1. drop all the table and recreate freshly   
+
+ *command :*
 ```
 php artisan migrate:fresh
 ```  
 
-> without losing table data modify table
+### 2. without losing table data modify table
 - create new migration file  
 
-*terminal:*
+*command:*
 ```
 php artisan make:migration add_favorite_color_column
 ```
 
-> Create Controller  
-
-*terminal:*
+## Create Controller 
+--- 
+*terminal command:*
 ```
 php artisan make:controller userController
 ```
->> loclation: [app/Http/Controllers/userController.php] 
+*file loclation:*  
+ [app/Http/Controllers/userController.php] 
+ 
+---
+## constrained();
+- intergrity check  
+#learnmore
+---
 
-> constrained();
-- intergrity check
+## onDelete();  
+#learnmore 
+
+---
+## {!! !!}  
 #learnmore
 
-> onDelete();
-#learnmore
+---
 
-> {!! !!}  
-#learnmore
-
-> strip_tags(a,b);  
+## strip_tags(a,b);  
 ```
 strip_tags(Str::markdown($post->body), '<p><ul><ol><li><strong><em><h3><br>
 ```
-#learnmore
+>#learnmore
 
-> belongsTo(a, b);
+---
+##  belongsTo(a, b);
 - a = the class blog post belongsto
 - b = collumn name poweredby
-#learnmore
+> #learnmore
 
+---
 ## Rule::unique(a,b)
 - a = table in the database
 - b = field or collumn
-
+---
 ## $request->session()->regenerate();
-> learn more about this
-
+> #learnmore
+---
 ## auth()->user()->username
-> this showing logged user name
+- this showing logged user name
 
 ## csrf
->CSRF (Cross-Site Request Forgery) is a type of security vulnerability that occurs when a malicious actor tricks a user into performing an action on a website without their knowledge or consent. This is usually achieved by sending a request to a website that the user is currently logged into, using the user's existing session cookie.
+- CSRF (Cross-Site Request Forgery) is a type of security vulnerability that occurs when a malicious actor tricks a user into performing an action on a website without their knowledge or consent. This is usually achieved by sending a request to a website that the user is currently logged into, using the user's existing session cookie.
 
-> To prevent CSRF attacks, web developers can implement several measures, including:
+- To prevent CSRF attacks, web developers can implement several measures, including:
 
-1. Implementing CSRF tokens: A unique token is generated for each user session and included in the HTML form or request. When the form is submitted or the request is made, the server verifies that the token is correct before executing the action.
+    1. Implementing CSRF tokens: A unique token is generated for each user session and included in the HTML form or request. When the form is submitted or the request is made, the server verifies that the token is correct before executing the action.
 
-2. Implementing SameSite cookies: SameSite cookies restrict the cookies to being sent only to the same domain as the website that set the cookie. This can prevent CSRF attacks from external websites.
+    2. Implementing SameSite cookies: SameSite cookies restrict the cookies to being sent only to the same domain as the website that set the cookie. This can prevent CSRF attacks from external websites.
 
-3. Using HTTP headers: The CSRF token can also be included in the HTTP header of the request, rather than in the HTML form.
+    3. Using HTTP headers: The CSRF token can also be included in the HTTP header of the request, rather than in the HTML form.
 
-4. Ensuring secure coding practices: Developers should ensure that their code is secure, and avoid any vulnerabilities that could be exploited by attackers.
+    4. Ensuring secure coding practices: Developers should ensure that their code is secure, and avoid any vulnerabilities that could be exploited by attackers.
 
 By implementing these measures, developers can greatly reduce the risk of CSRF attacks and ensure the security of their users' data.
 
+---
 ## with(a,b)
 - a = type of message
 - b = actual text user see
-
+---
 ## session()
-> learn more about this
-
+> #learnmore
+---
 ## has()
 > learn more about this
 
+---
 # middleware
-> create middleware  
-**terminal: ** 
+## create middleware  
+*terminal:* 
 ```
 php artisan make:middleware MustBeLoggedIn
 ```
+---
 
 # Create blog post Steps:
 1. Go Routes file (web.php)
@@ -233,7 +253,10 @@ php artisan make:controller PostController
     ---  
     3. views file
     > 1. Create new file  
-    > - profile-posts.blade.php
+    > - profile-posts.blade.php  
+    ---
+    4. Models file  
+    > 1. Create function
 
 
 
