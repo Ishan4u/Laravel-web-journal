@@ -29,4 +29,4 @@ Route::post('/create-post', [PostController::class, 'storeNewPost'])->middleware
 Route::get('/post/{post}', [PostController::class, 'viewSinglePost']);
 
 // Profile related routes
-Route::get('/profile/{ishan:username}', [userController::class, 'profile']);
+Route::get('/profile/{user:username}', [userController::class, 'profile']);

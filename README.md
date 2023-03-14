@@ -12,11 +12,12 @@ $name = "ishan";
 echo 'My name is ' . $name . " that is truth. ";
 ```
 # Vs code
-`ctrl + ,` = setting  
-`ctrl + p` =easily navigate files  
-install extension `php namespace resolver`
+- `ctrl + ,` = setting  
+- `ctrl + p` =easily navigate files  
+- install extension `php namespace resolver`
 
 # Run php on browser (testing)
+*command:*  
 `php -S localhost:8000`
 
 # Composer
@@ -206,8 +207,18 @@ By implementing these measures, developers can greatly reduce the risk of CSRF a
 > #learnmore
 ---
 ## has()
-> learn more about this
+> #learnmore
 
+---
+## hasmany(a, b);
+- a = postclass
+- b = collumn name in database powering the relationship  
+*code:*
+```
+```
+
+## format('n/j/Y');
+> #learnmore
 ---
 # middleware
 ## create middleware  
