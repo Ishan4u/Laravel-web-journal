@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     //
+    public function showEditForm(Post $post) {
+        return view('edit-post', ['post' => $post]);
+    }
+
     public function delete(Post $post) {
         
         $post->delete();
