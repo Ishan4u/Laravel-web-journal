@@ -15,8 +15,7 @@ class PostController extends Controller
         return view('single-post', ['post' => $post]);
     }
 
-    public function storgh auth logout --all
-    eNewPost(Request $request) {
+    public function storeNewPost(Request $request) {
         $incomingFields = $request->validate([
             'title' => 'required',
             'body' => 'required'
