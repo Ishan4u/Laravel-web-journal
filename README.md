@@ -227,6 +227,15 @@ By implementing these measures, developers can greatly reduce the risk of CSRF a
 php artisan make:middleware MustBeLoggedIn
 ```
 ---
+# Policy
+- In Laravel, a policy is a class that specifies authorization rules for a model or resource to determine whether an authenticated user is authorized to perform a specific action on it.
+
+## create a new policy for the "Post" model:
+```terminal
+
+php artisan make:policy PostPolicy --model=post
+```
+
 
 # Create blog post Steps:
 1. Go Routes file (web.php)
@@ -280,6 +289,9 @@ php artisan make:migration create_posts_table
 ```
 php artisan migrate
 ```
+
+# Gate::define(a,b)
+#learnmore
 
 # Commit References
 > Conect html frontend form to Database Step2  
