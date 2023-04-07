@@ -236,6 +236,12 @@ php artisan make:middleware MustBeLoggedIn
 php artisan make:policy PostPolicy --model=post
 ```
 
+# $imgData = Image::make($request->file('avatar'))->fit(120)->encode('jpg');
+> #learnmore
+        
+
+# Storage::put(a,b);
+> #learnmore
 
 # Create blog post Steps:
 1. Go Routes file (web.php)
