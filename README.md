@@ -243,6 +243,15 @@ php artisan make:policy PostPolicy --model=post
 # Storage::put(a,b);
 > #learnmore
 
+# ternary operator 
+- (condition) ? value_if_true : value_if_false;
+- For example:
+```
+$age = 25;
+$is_old_enough = ($age >= 18) ? "Yes" : "No";
+echo $is_old_enough;
+```
+
 # Create blog post Steps:
 1. Go Routes file (web.php)
 - create Route
