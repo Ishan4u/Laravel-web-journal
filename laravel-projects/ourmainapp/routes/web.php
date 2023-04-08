@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\userController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FollowController;
 
 
 
@@ -31,8 +32,8 @@ Route::post('/manage-avatar', [userController::class, 'storeAvatar'])->middlewar
 
 
 // Follow related routes
-Route::post('/create-follow/{user:username}', [FollowController::class], 'createFollow');
-Route::post('/remove-follow/{user:username}', [FollowController::class], 'removeFollow');
+Route::post('/create-follow/{user:username}', [FollowController::class, 'createFollow'])->middleware('mustBeLoggedIn');
+Route::post('/remove-follow/{user:username}', [FollowController::class, 'removeFollow'])->middleware('mustBeLoggedIn');
 
 // Blog post related routes
 Route::get('/create-post', [PostController::class, 'showCreateForm'])->middleware('mustBeLoggedIn');
