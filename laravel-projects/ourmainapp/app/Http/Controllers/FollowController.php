@@ -27,6 +27,7 @@ class FollowController extends Controller
         $newFollow->followeduser = $user->id;
         $newFollow->save();
 
+        return back()->with('success', 'User successfully followed');
     }
 
     public function removeFollow() {
