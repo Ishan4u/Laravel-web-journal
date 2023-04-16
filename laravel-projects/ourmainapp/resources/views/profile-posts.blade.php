@@ -3,8 +3,8 @@
         <h2>
           <img class="avatar-small" src="{{$avatar}}" /> {{$username}}
           @auth {{-- only for logged in user see follow and manage avatar button--}}
-          @if (!$currentlyFollowing AND auth()->user()->id != $username)
-          {{-- code checks if the "$currentlyFollowing" variable is false and if the "id" of the currently authenticated user is not equal to the value of "$username". If both conditions are true, then the code inside the "if" block will be executed. Otherwise, it will be skipped. --}}
+          @if (!$currentlyFollowing AND auth()->user()->username != $username)
+          {{-- Blade code checks if the "$currentlyFollowing" variable is false and if the "username" of the currently authenticated user is not equal to the value of "$username". If both conditions are true, then the code inside the "if" block will be executed. Otherwise, it will be skipped. --}}
           <form class="ml-2 d-inline" action="/create-follow/{{$username}}" method="POST">
             @csrf
             <button class="btn btn-primary btn-sm">Follow <i class="fas fa-user-plus"></i></button>
