@@ -323,6 +323,12 @@ php artisan migrate
 # Gate::define(a,b)
 #learnmore
 
+
+# Stop following user
+1. UserController.php
+- 
+2. profile-posts.blade.php
+
 # Commit References
 > Conect html frontend form to Database Step2  
 - intro about validate
