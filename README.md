@@ -252,6 +252,21 @@ $is_old_enough = ($age >= 18) ? "Yes" : "No";
 echo $is_old_enough;
 ```
 
+# migration follow table
+```php
+public function up(): void
+    {
+        Schema::create('follows', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->unsignedBigInteger('followeduser');
+            $table->foreign('followeduser')->references('id')->on('users');
+            $table->timestamps();
+        });
+    }
+```
+
+
 # Create blog post Steps:
 1. Go Routes file (web.php)
 - create Route
