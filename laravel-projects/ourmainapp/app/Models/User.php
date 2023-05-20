@@ -21,6 +21,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'username',
+        'phone',
         'email',
         'password',
     ];
@@ -52,5 +53,9 @@ class User extends Authenticatable
 
     public function posts() {
         return $this->hasmany(Post::class, 'user_id');
+    }
+
+    public function feedPosts() {
+        return $this->hasManyThrough(Post::class,Follow::class,'user_id', 'user_id', 'id','followeduser');
     }
 }

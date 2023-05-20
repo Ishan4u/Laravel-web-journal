@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\userController;
@@ -18,9 +19,7 @@ use App\Http\Controllers\FollowController;
 |
 */
 
-Route::get('/admin-only', function () {
-    return 'only admin should able to see this page';
-})->middleware('can:visitAdminPages');
+Route::get('/admin-only',[AdminController::class,"showAdminpage"])->middleware('can:visitAdminPages');
 
 // User related routes
 Route::get('/', [userController::class, "showCorrectHomepage"])->name('login');
@@ -42,6 +41,7 @@ Route::get('/post/{post}', [PostController::class, 'viewSinglePost']);
 Route::delete('/post/{post}', [PostController::class, 'delete'])->middleware('can:delete,post');
 Route::get('/post/{post}/edit', [PostController::class, 'showEditForm'])->middleware('can:update,post');
 Route::put('/post/{post}', [PostController::class, 'actuallyUpdate'])->middleware('can:update,post');
+Route::get('/search/{term}', [PostController::class, 'search']);
 
 // Profile related routes
 Route::get('/profile/{user:username}', [userController::class, 'profile']);

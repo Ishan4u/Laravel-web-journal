@@ -56,7 +56,7 @@ class userController extends Controller
 
     public function showCorrectHomepage() {
         if(auth()->check()) {
-            return view('homepage-feed');
+            return view('homepage-feed',['posts' => auth()->user()->feedPosts()->latest()->get()]);
         } else {
             return view('homepage');
         }
@@ -79,6 +79,7 @@ class userController extends Controller
     public function register(Request $request) {
         $incomingField = $request->validate([
             'username' => ['required', 'min:4', 'max:20', Rule::unique('users', 'username') ],
+            'phone' => ['required', 'min:10', 'max:12' ],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => ['required', 'min:8', 'confirmed']
         ]);

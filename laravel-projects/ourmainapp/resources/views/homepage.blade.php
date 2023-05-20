@@ -2,8 +2,8 @@
     <div class="container py-md-5">
         <div class="row align-items-center">
           <div class="col-lg-7 py-3 py-md-5">
-            <h1 class="display-3">Remember Writing?</h1>
-            <p class="lead text-muted">Are you sick of short tweets and impersonal &ldquo;shared&rdquo; posts that are reminiscent of the late 90&rsquo;s email forwards? We believe getting back to actually writing is the key to enjoying the internet again.</p>
+            <h1 class="display-3">Stay curious.</h1>
+            <p class="lead text-muted">Discover stories, thinking, and expertise from writers on any topic.</p>
           </div>
           <div class="col-lg-5 pl-lg-5 pb-3 py-lg-5">
             <form action="/register" method="POST" id="registration-form">
@@ -12,6 +12,14 @@
                 <label for="username-register" class="text-muted mb-1"><small>Username</small></label>
                 <input value="{{old('username')}}" name="username" id="username-register" class="form-control" type="text" placeholder="Pick a username" autocomplete="off" />
                 @error('username')
+                    <p class="m-0 small alert alert-danger shadow-sm"> {{$message}} </p>
+                @enderror
+              </div>
+
+              <div class="form-group">
+                <label for="phone-register" class="text-muted mb-1"><small>Phone</small></label>
+                <input value="{{old('phone')}}" name="phone" id="phone-register" class="form-control" type="text" placeholder="Enter Phone Number" autocomplete="off" />
+                @error('phone')
                     <p class="m-0 small alert alert-danger shadow-sm"> {{$message}} </p>
                 @enderror
               </div>
