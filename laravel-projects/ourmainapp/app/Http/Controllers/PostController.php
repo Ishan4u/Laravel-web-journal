@@ -10,7 +10,7 @@ class PostController extends Controller
 {
     //
     public function search($term) {
-        $posts = Post::search($term)->get();
+        $posts = Post::search($term)->where('approval', 1)->get();
         $posts->load('user:id,username,avatar');
         return $posts;
     }
