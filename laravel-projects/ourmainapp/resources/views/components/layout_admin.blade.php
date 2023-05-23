@@ -7,10 +7,18 @@
 <head>
     <meta charset="utf-8" />
     <title>Admin Dashboard</title>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Responsive bootstrap 4 admin template" name="description" />
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- ajax cdn -->
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    
+
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
@@ -20,6 +28,10 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet" />
+
+    <!--toggle -->
+    {{-- <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> --}}
 
 </head>
 
@@ -280,7 +292,7 @@
                                 <form action="/logout" method="POST" class="dropdown-item notify-item">
                                     @csrf
                                     <button class="btn btn-sm btn-secondary">Sign Out</button>
-                                  </form>
+                                </form>
 
                             </div>
                         </li>
@@ -338,15 +350,15 @@
 
                             <li class="has-submenu">
                                 <a href="#"> <i class="mdi mdi-view-dashboard"></i>Dashboard</a>
-                                
+
                             </li>
 
-                            
+
 
                             <li class="has-submenu">
                                 <a href="#"> <i class="mdi mdi-comment-text"></i>Blog
                                 </a>
-                               {{--  <ul class="submenu">
+                                {{--  <ul class="submenu">
                                     <li><a href="blogs-dashboard.html">Dashboard</a></li>
                                     <li><a href="blogs-blog-list.html">Blog List</a></li>
                                     <li><a href="blogs-blog-column.html">Blog Column</a></li>
@@ -355,7 +367,7 @@
                                 </ul> --}}
                             </li>
 
-                            
+
                         </ul>
                         <!-- End navigation menu -->
 
@@ -377,7 +389,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        {{date('Y')}} &copy; Copyright <a href="#">Ishan</a>
+                        {{ date('Y') }} &copy; Copyright <a href="#">Ishan</a>
                     </div>
                 </div>
             </div>
@@ -393,13 +405,16 @@
     </div>
     <!-- END wrapper -->
 
-    
+
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
 
     {{--  <a href="javascript:void(0);" class="right-bar-toggle demos-show-btn">
         <i class="mdi mdi-settings-outline mdi-spin"></i> &nbsp;Choose Demos
     </a> --}}
+
+
+
 
     <!-- Vendor js -->
     <script src="assets/js/vendor.min.js"></script>

@@ -45,3 +45,7 @@ Route::get('/search/{term}', [PostController::class, 'search']);
 
 // Profile related routes
 Route::get('/profile/{user:username}', [userController::class, 'profile']);
+// Route::get('/admin-profile/{user:username}', [userController::class, 'adminprofileView']);
+
+//toggle
+Route::get('/changeStatus', [AdminController::class, 'changeStatus']);
