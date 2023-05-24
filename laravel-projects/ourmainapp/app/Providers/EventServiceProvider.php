@@ -2,6 +2,11 @@
 
 namespace App\Providers;
 
+// STEP 2
+use App\Events\OurExampleEvent;
+use App\Listeners\OurExampleListener;
+// STEP 3 run(`php artisan event:generate`)
+
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -15,6 +20,11 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
+        
+        // STEP 1 
+        OurExampleEvent::class => [
+            OurExampleListener::class
+        ],
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
