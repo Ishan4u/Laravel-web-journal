@@ -3,8 +3,9 @@
 namespace App\Listeners;
 
 use App\Events\OurExampleEvent;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class OurExampleListener
 {
@@ -22,5 +23,6 @@ class OurExampleListener
     public function handle(OurExampleEvent $event): void
     {
         //
+        Log::debug("Our custom Event and Listeners just worked");
     }
 }
