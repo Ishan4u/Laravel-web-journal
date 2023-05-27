@@ -21,7 +21,7 @@ use App\Http\Controllers\FollowController;
 |
 */
 
-Route::get('/admin-only',[AdminController::class,"showAdminpage"])->middleware('can:visitAdminPages');
+Route::get('/admin-only', [AdminController::class, "showAdminpage"])->middleware('can:visitAdminPages');
 
 // User related routes
 Route::get('/', [userController::class, "showCorrectHomepage"])->name('login');
@@ -54,20 +54,20 @@ Route::get('/changeStatus', [AdminController::class, 'changeStatus']);
 
 // STEP 1
 // chat routes
-Route::post('/send-chat-message', function(Request $request){
-    
+Route::post('/send-chat-message', function (Request $request) {
+
     //validation
     $formFields = $request->validate([
         'textvalue' => 'required'
     ]);
 
     // trim white space b4 and after that value
-    if(!trim(strip_tags($formFields['textvalue']))){
+    if (!trim(strip_tags($formFields['textvalue']))) {
         return response()->noContent();
     }
 
     //if valid msg
-    broadcast(new ChatMessage(['username' => auth()->user()->username,  'textvalue' => strip_tags($request->textvalue), 'avatar' => auth()->user()->avatar]))->toOthers();
+    broadcast(new ChatMessage(['username' => auth()->user()->username, 'textvalue' => strip_tags($request->textvalue), 'avatar' => auth()->user()->avatar]))->toOthers();
     return response()->noContent();
 
 })->middleware('mustBeLoggedIn');

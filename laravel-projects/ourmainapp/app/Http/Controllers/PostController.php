@@ -10,12 +10,14 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     //
-    public function search($term) {
+    public function search($term)
+    {
         $posts = Post::search($term)->where('approval', 1)->get();
         $posts->load('user:id,username,avatar');
         return $posts;
     }
-    public function actuallyUpdate(Post $post, Request $request) {
+    public function actuallyUpdate(Post $post, Request $request)
+    {
         $incomingFields = $request->validate([
             'title' => 'required',
             'body' => 'required'
@@ -29,30 +31,34 @@ class PostController extends Controller
         return back()->with('success', 'Post successfully updated.');
     }
 
-    public function showEditForm(Post $post) {
+    public function showEditForm(Post $post)
+    {
         return view('edit-post', ['post' => $post]);
     }
 
-    public function delete(Post $post) {
-        
+    public function delete(Post $post)
+    {
+
         $post->delete();
         return redirect('/profile/' . auth()->user()->username)->with('success', 'Post successfully deleted.');
     }
 
-    public function viewSinglePost(Post $post) {
-        $currentlyFollowing =0;
-        if(!auth()->check() && !$post->approval == 1) {
+    public function viewSinglePost(Post $post)
+    {
+        $currentlyFollowing = 0;
+        if (!auth()->check() && !$post->approval == 1) {
             return redirect('/');
         }
         if (auth()->check()) {
             $currentlyFollowing = Follow::where([['user_id', '=', auth()->user()->id], ['followeduser', '=', $post->user_id]])->count();
-           }
-           
+        }
+
         $post['body'] = strip_tags(Str::markdown($post->body), '<p><ul><ol><li><strong><em><h3><br>');
         return view('single-post', ['post' => $post, 'currentlyFollowing' => $currentlyFollowing]);
     }
 
-    public function storeNewPost(Request $request) {
+    public function storeNewPost(Request $request)
+    {
         $incomingFields = $request->validate([
             'title' => 'required',
             'body' => 'required'
@@ -63,11 +69,12 @@ class PostController extends Controller
         $incomingFields['user_id'] = auth()->id();
 
         $newPost = Post::create($incomingFields);
-        
+
         return redirect("/post/{$newPost->id}")->with('success', 'New post successfully created');
     }
 
-    public function showCreateForm() {
+    public function showCreateForm()
+    {
         return view('create-post');
     }
 }

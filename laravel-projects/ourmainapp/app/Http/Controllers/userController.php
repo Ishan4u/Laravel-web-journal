@@ -13,7 +13,8 @@ use App\Models\User; //Models perform crud oparation and relationships
 class userController extends Controller
 {
 
-    public function storeAvatar(Request $request) {
+    public function storeAvatar(Request $request)
+    {
         $request->validate([
             'avatar' => 'required|image|max:3000'
         ]);
@@ -29,50 +30,55 @@ class userController extends Controller
         $user->avatar = $filename; // Database user table avatar column 
         $user->save(); // Save to database
 
-        if($oldAvatar != "/fallback-avatar.jpg"){
+        if ($oldAvatar != "/fallback-avatar.jpg") {
             Storage::delete(str_replace("/storage/", "public/", $oldAvatar));
         }
 
         return back()->with('success', 'Congrates on the new avatar.');
     }
 
-    public function showAvatarForm() {
+    public function showAvatarForm()
+    {
         return view('avatar-form');
     }
 
-    public function profile(User $user) {
-       $currentlyFollowing =0;
+    public function profile(User $user)
+    {
+        $currentlyFollowing = 0;
 
-       if (auth()->check()) {
-        $currentlyFollowing = Follow::where([['user_id', '=', auth()->user()->id], ['followeduser', '=', $user->id]])->count();
-       }
+        if (auth()->check()) {
+            $currentlyFollowing = Follow::where([['user_id', '=', auth()->user()->id], ['followeduser', '=', $user->id]])->count();
+        }
 
-        return view('profile-posts', ['currentlyFollowing' => $currentlyFollowing, 'avatar' =>$user->avatar, 'username' => $user->username, 'posts' => $user->posts()->latest()->get(), 'postCount' => $user->posts()->count()]);
+        return view('profile-posts', ['currentlyFollowing' => $currentlyFollowing, 'avatar' => $user->avatar, 'username' => $user->username, 'posts' => $user->posts()->latest()->get(), 'postCount' => $user->posts()->count()]);
     }
 
-    
-    public function logout() {
-        
+
+    public function logout()
+    {
+
         event(new OurExampleEvent(['username' => auth()->user()->username, 'action' => 'Logout'])); // STEP 4;
         auth()->logout();
         return redirect('/')->with('success', 'You are now logged out.');
     }
 
-    public function showCorrectHomepage() {
-        if(auth()->check()) {
-            return view('homepage-feed',['posts' => auth()->user()->feedPosts()->where('approval', 1)->latest()->get()]);
+    public function showCorrectHomepage()
+    {
+        if (auth()->check()) {
+            return view('homepage-feed', ['posts' => auth()->user()->feedPosts()->where('approval', 1)->latest()->get()]);
         } else {
             return view('homepage');
         }
     }
 
-    public function login(Request $request) {
+    public function login(Request $request)
+    {
         $incomingFields = $request->validate([
             'loginusername' => 'required',
             'loginpassword' => 'required'
         ]);
 
-        if(auth()->attempt(['username' => $incomingFields['loginusername'], 'password' => $incomingFields['loginpassword']])) {
+        if (auth()->attempt(['username' => $incomingFields['loginusername'], 'password' => $incomingFields['loginpassword']])) {
             $request->session()->regenerate();
             event(new OurExampleEvent(['username' => auth()->user()->username, 'action' => 'Login'])); // STEP 4
             return redirect('/')->with('success', 'You are now logged in');
@@ -81,10 +87,11 @@ class userController extends Controller
         }
     }
 
-    public function register(Request $request) {
+    public function register(Request $request)
+    {
         $incomingField = $request->validate([
-            'username' => ['required', 'min:4', 'max:20', Rule::unique('users', 'username') ],
-            'phone' => ['required', 'min:10', 'max:12' ],
+            'username' => ['required', 'min:4', 'max:20', Rule::unique('users', 'username')],
+            'phone' => ['required', 'min:10', 'max:12'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => ['required', 'min:8', 'confirmed']
         ]);
