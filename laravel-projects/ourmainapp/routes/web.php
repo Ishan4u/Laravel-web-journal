@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\ChatMessage;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -49,3 +50,23 @@ Route::get('/profile/{user:username}', [userController::class, 'profile']);
 
 //toggle
 Route::get('/changeStatus', [AdminController::class, 'changeStatus']);
+
+// STEP 1
+// chat routes
+Route::post('/send-chat-message', function(Request $request){
+    
+    //validation
+    $formFields = $request->validate([
+        'textvalue' => 'required'
+    ]);
+
+    // trim white space b4 and after that value
+    if(!trim(strip_tags($formFields['textvalue']))){
+        return response()->noContent();
+    }
+
+    //if valid msg
+    broadcast(new ChatMessage(['username' => auth()->user()->username,  'textvalue' => strip_tags($request->textvalue), 'avatar' => auth()->user()->avatar]))->toOthers();
+    return response()->noContent();
+
+})->middleware('mustBeLoggedIn');

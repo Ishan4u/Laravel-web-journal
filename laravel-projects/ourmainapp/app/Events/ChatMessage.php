@@ -7,19 +7,23 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow; // STEP 3
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class ChatMessage
+class ChatMessage implements ShouldBroadcastNow // STEP 4
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+
+    public $chat; // STEP 6
 
     /**
      * Create a new event instance.
      */
-    public function __construct()
+    public function __construct($chat) // STEP 5
     {
         //
+        $this->chat = ['username' => $chat['username'], 'avatar' => $chat['avatar'], 'textvalue' => $chat['textvalue']];
     }
 
     /**
@@ -30,7 +34,7 @@ class ChatMessage
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('channel-name'),
+            new PrivateChannel('chatchannel'), //STEP 7
         ];
     }
 }
