@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Follow;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -39,12 +40,16 @@ class PostController extends Controller
     }
 
     public function viewSinglePost(Post $post) {
-        
+        $currentlyFollowing =0;
         if(!auth()->check() && !$post->approval == 1) {
             return redirect('/');
         }
+        if (auth()->check()) {
+            $currentlyFollowing = Follow::where([['user_id', '=', auth()->user()->id], ['followeduser', '=', $post->user_id]])->count();
+           }
+           
         $post['body'] = strip_tags(Str::markdown($post->body), '<p><ul><ol><li><strong><em><h3><br>');
-        return view('single-post', ['post' => $post]);
+        return view('single-post', ['post' => $post, 'currentlyFollowing' => $currentlyFollowing]);
     }
 
     public function storeNewPost(Request $request) {
