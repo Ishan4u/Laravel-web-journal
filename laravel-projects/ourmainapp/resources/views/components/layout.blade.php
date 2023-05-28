@@ -21,7 +21,7 @@
     <style>
       .image-preview{
         width: 100%;
-        height: 427px;
+        height: 320px;
         border: 2px solid #dddddd;
         margin-top: 15px;
         margin-bottom: 15px;
