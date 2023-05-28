@@ -6,6 +6,8 @@ use App\Models\Post;
 use App\Models\Follow;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -61,14 +63,22 @@ class PostController extends Controller
     {
         $incomingFields = $request->validate([
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'thumb' => 'required|image|max:10000' // STEP 1
         ]);
+        
+       
 
         $incomingFields['title'] = strip_tags($incomingFields['title']);
         $incomingFields['body'] = strip_tags($incomingFields['body']);
         $incomingFields['user_id'] = auth()->id();
 
         $newPost = Post::create($incomingFields);
+
+        $post_id = $newPost->id; // STEP 3
+        $imgName = $post_id . '-' . uniqid() . '.jpg';
+        $imgData = Image::make($request->file('thumb'))->fit(600,400)->encode('jpg'); // STEP 2
+        Storage::put('public/thumb/' . $imgName, $imgData); // STEP 4
 
         return redirect("/post/{$newPost->id}")->with('success', 'New post successfully created');
     }

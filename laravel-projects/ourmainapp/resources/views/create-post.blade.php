@@ -1,6 +1,6 @@
 <x-layout>
     <div class="container py-md-5 container--narrow">
-        <form action="/create-post" method="POST">
+        <form action="/create-post" method="POST" enctype="multipart/form-data">
             @csrf
           <div class="form-group">
             <label for="post-title" class="text-muted mb-1"><small>Title</small></label>
@@ -21,6 +21,9 @@
           {{-- Start post image upload HTML --}}
           <label for="post-thumb" class="text-muted mb-1"><small>Thumbnail photo</small></label><br>
           <input type="file" name="thumb" id="thumb">
+          @error('thumb')
+          <p class="alert small alert-danger shadow-sm ">{{$message}} </p>
+          @enderror
           <div class="image-preview" id="imagePreview">
               <img src="" alt="Image Preview" class="image-preview__image">
               <span class="image-preview__default-text">Image imagePreview</span>
