@@ -80,6 +80,11 @@ class PostController extends Controller
         $imgData = Image::make($request->file('thumb'))->fit(600,400)->encode('jpg'); // STEP 2
         Storage::put('public/thumb/' . $imgName, $imgData); // STEP 4
 
+        // Save img name to database
+        $newPost->thumb = $imgName; // STEP 5
+        $newPost->save(); // STEP 6
+
+
         return redirect("/post/{$newPost->id}")->with('success', 'New post successfully created');
     }
 
