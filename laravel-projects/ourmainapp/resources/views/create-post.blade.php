@@ -17,6 +17,15 @@
             <p class="m-0 small alert alert-danger shadow-sm">{{$message}} </p>
             @enderror
           </div>
+
+          {{-- Start post image upload HTML --}}
+          <label for="post-thumb" class="text-muted mb-1"><small>Thumbnail photo</small></label><br>
+          <input type="file" name="thumb" id="thumb">
+          <div class="image-preview" id="imagePreview">
+              <img src="" alt="Image Preview" class="image-preview__image">
+              <span class="image-preview__default-text">Image imagePreview</span>
+          </div>
+          {{-- Start post image upload HTML  --}}
   
           <button class="btn btn-primary">Save New Post</button>
         </form>
