@@ -1,5 +1,10 @@
 <x-layout>
     <div class="container py-md-5 container--narrow">
+
+        <div class="d-flex justify-content-between">
+            <img class="thumb" src="/storage/thumb/{{$post->thumb}}" alt="">
+        </div>
+        
         <div class="d-flex justify-content-between">
             <h2>{{ $post->title }} </h2>
             @can('update', $post)
