@@ -121,37 +121,7 @@
             class="chat-wrapper shadow border-top border-left border-right"> </div>
     @endauth
 
-    {{-- Start post image upload js --}}
-    <script>
-      const thumb = document.getElementById("thumb");
-      const previewContainer = document.getElementById("imagePreview");
-      const previewImage = previewContainer.querySelector(".image-preview__image");
-      const previewDefaulText = previewContainer.querySelector(".image-preview__default-text");
-
-      thumb.addEventListener("change", function(){
-        const file = this.files[0];
-        // console.log(file);
-
-        if(file){
-          const reader = new FileReader();
-
-          previewDefaulText.style.display = "none";
-          previewImage.style.display = "block";
-
-          reader.addEventListener("load", function() {
-            // console.log(this);
-            previewImage.setAttribute("src", this.result);
-          });
-
-          reader.readAsDataURL(file);
-        } else {
-          previewDefaulText.style.display = null;
-          previewImage.style.display = null;
-          previewImage.setAttribute("src", "");
-        }
-      });
-    </script>
-    {{-- End post image upload js --}}
+    
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
