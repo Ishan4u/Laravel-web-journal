@@ -23,33 +23,38 @@
             {{ $post->created_at->format('n/j/Y') }}
         </p> --}}
 
-        {{-- Following part starts --}}
-        <h2>
-            <img class="avatar-small" src="{{ $post->user->avatar }}" /> <a
-                href="/profile/{{ $post->user->username }}">{{ $post->user->username }} </a>
-            @auth {{-- only for logged in user see follow and manage avatar button --}}
-                @if (!$currentlyFollowing and auth()->user()->username != $post->user->username)
-                    {{-- Blade code checks if the "$currentlyFollowing" variable is false and if the "username" of the currently authenticated user is not equal to the value of "$username". If both conditions are true, then the code inside the "if" block will be executed. Otherwise, it will be skipped. --}}
-                    <form class="ml-2 d-inline" action="/create-follow/{{ $post->user->username }}" method="POST">
-                        @csrf
-                        <button class="btn btn-primary btn-sm">Follow <i class="fas fa-user-plus"></i></button>
-                    </form>
-                @endif
+        <div class="profile-details"> {{-- Author profile start --}}
+            <div class="pd-left">
+                <div class="pd-row">
+                    <a href="/profile/{{ $post->user->username }}"><img class="pd-image"
+                            src="{{ $post->user->avatar }}" /></a>
+                    <div>
+                        <h3>Written by <a href="/profile/{{ $post->user->username }}">{{ $post->user->username }} </a>
+                        </h3>
+                        <p>Date published : {{ $post->created_at->format('n/j/Y') }} </p>
 
-                @if ($currentlyFollowing)
-                    <form class="ml-2 d-inline" action="/remove-follow/{{ $post->user->username }}" method="POST">
-                        @csrf
-                        <button class="btn btn-danger btn-sm">Stop Following <i class="fas fa-user-times"></i></button>
-                    </form>
-                @endif
+                    </div>
+                </div>
+            </div>
+            <div class="pd-right">
+                @auth
+                    @if (!$currentlyFollowing and auth()->user()->username != $post->user->username)
+                        <form class="ml-2 d-inline" action="/create-follow/{{ $post->user->username }}" method="POST">
+                            @csrf
+                            <button class="btn btn-primary btn-sm">Follow <i class="fas fa-user-plus"></i></button>
+                        </form>
+                    @endif
 
-                @if (auth()->user()->username == $post->user->username)
-                    <a href="/manage-avatar" class="btn btn-secondary btn-sm">Manage Avatar</a>
-                @endif
-            @endauth
+                    @if ($currentlyFollowing)
+                        <form class="ml-2 d-inline" action="/remove-follow/{{ $post->user->username }}" method="POST">
+                            @csrf
+                            <button class="btn btn-danger btn-sm">Stop Following <i class="fas fa-user-times"></i></button>
+                        </form>
+                    @endif
+                @endauth
+            </div>
+        </div> {{-- Author profile Ends --}}
 
-        </h2>
-        {{-- Following part Ends --}}
 
         <div class="body-content">
             {!! $post->body !!}

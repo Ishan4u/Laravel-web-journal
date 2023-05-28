@@ -406,3 +406,50 @@ footer.border-top.text-center.small.text-muted.py-3 {
     backdrop-filter: blur(12px);
 }
 
+
+/*Author profile details*/
+.profile-details{
+  /* background: #fff; */
+  padding-top: 20px;
+  padding-bottom: 20px;
+  /*border: 1px solid black;*/
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.pd-row{
+  display: flex;
+  align-items: flex-start;
+
+}
+
+.pd-image{
+  width: 50px;
+  margin-right: 20px;
+  border-radius: 10px;
+}
+
+.pd-row div h3{
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.pd-row div p{
+  font-size: 13px
+}
+
+.pd-right button{
+  /* background: #1876f2; */
+  border: 0;
+  outline: 0;
+  padding: 10px;
+  /* display: inline-flex; */
+  align-items: center;
+  color: #fff;
+  border-radius: 3px;
+  margin-left: 10px;
+  /*margin-right: 80px;*/
+  cursor: pointer;
+}
