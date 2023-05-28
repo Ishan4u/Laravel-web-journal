@@ -45,12 +45,12 @@
                         </form>
                     @endif
 
-                    @if ($currentlyFollowing)
+                    {{-- @if ($currentlyFollowing)
                         <form class="ml-2 d-inline" action="/remove-follow/{{ $post->user->username }}" method="POST">
                             @csrf
                             <button class="btn btn-danger btn-sm">Stop Following <i class="fas fa-user-times"></i></button>
                         </form>
-                    @endif
+                    @endif --}}
                 @endauth
             </div>
         </div> {{-- Author profile Ends --}}
