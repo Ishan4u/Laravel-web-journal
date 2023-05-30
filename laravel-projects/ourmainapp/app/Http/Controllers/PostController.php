@@ -22,13 +22,30 @@ class PostController extends Controller
     {
         $incomingFields = $request->validate([
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'thumb' => 'required|image|max:10000' // STEP 1
         ]);
 
         $incomingFields['title'] = strip_tags($incomingFields['title']);
         $incomingFields['body'] = strip_tags($incomingFields['body']);
 
         $post->update($incomingFields);
+
+        $post_id = $post->id; // STEP 3
+        $imgName = $post_id . '-' . uniqid() . '.jpg';
+        $imgData = Image::make($request->file('thumb'))->fit(600,400)->encode('jpg'); // STEP 2
+        Storage::put('public/thumb/' . $imgName, $imgData); // STEP 4
+
+        $oldThumb = $post->thumb;
+
+        // Save img name to database
+        $post->thumb = $imgName; // STEP 5
+        $post->save(); // STEP 6
+
+        if($oldThumb != "/default-thumb.jpg"){
+            Storage::delete(str_replace("/storage/", "public/", $oldThumb));
+            
+        }
 
         return back()->with('success', 'Post successfully updated.');
     }
