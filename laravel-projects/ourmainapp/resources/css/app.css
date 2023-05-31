@@ -471,3 +471,52 @@ footer.border-top.text-center.small.text-muted.py-3 {
     padding: 7px;
     border-radius: 25px;
 }
+
+/* Feauture image section */
+
+.f-body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'poppins', sans-serif;
+
+  /* display: flex; */
+  /* margin-top: 1.5rem!important; */
+  padding-top: 3rem!important;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.f-body * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'poppins', sans-serif;
+
+}
+
+.feauture-img{
+
+  max-width: 40%;
+  float: left;
+  border: 1px solid #256D85;
+  padding: 2px;
+  border-radius: 10px;
+  margin-right: 15px;
+}
+
+.wrapper{
+  /* margin: 150px auto; */
+  margin-top: 2.5rem!important;
+  width: 100%;
+}
+
+.text-box h2{
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.text-box p {
+  font-size: 14px;
+}
