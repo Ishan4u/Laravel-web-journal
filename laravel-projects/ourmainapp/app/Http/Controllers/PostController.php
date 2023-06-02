@@ -116,4 +116,9 @@ class PostController extends Controller
     {
         return view('create-post');
     }
+
+    // view test page function
+    public function showTest(){
+        return view('test');
+    }
 }

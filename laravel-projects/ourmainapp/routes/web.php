@@ -52,6 +52,11 @@ Route::get('/profile/{user:username}', [userController::class, 'profile']);
 //toggle
 Route::get('/changeStatus', [AdminController::class, 'changeStatus']);
 
+// test page route
+Route::get('/test', [PostController::class, 'showTest']);
+
+
+
 // STEP 1
 // chat routes
 Route::post('/send-chat-message', function (Request $request) {
