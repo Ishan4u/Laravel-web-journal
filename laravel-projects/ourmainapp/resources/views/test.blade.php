@@ -19,79 +19,47 @@
         <h1>Hello, world!</h1>
     </div>
 
-    {{-- <========= Boosrap Card Section Starts =========> --}}
-    <div class="cream-bg">
-        <div class="container">
-            <div class="row g-5 justify-content-center">
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="row g-0">
-                            <div class="col-6 col-md-5">
-                                <img class="card-img img-fluid rounded-start"
-                                    src="https://www.1zoom.me/prev/297/296865.jpg" alt="">
-                            </div>
-                            <div class="col-6 col-md-7">
-                                <div class="card-body d-flex flex-column">
-                                    <div class="h-100">
-                                        <h3 class="card-title">Ishan</h3>
-                                        <p class="card-text">
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the
-                                            1500s,
-                                        </p>
-                                        {{-- <h4 class="card-titile mb-3">views<strong>30</strong></h4> --}}
-                                    </div>
-                                    <div style="margin-top:.7rem;">
-                                        <button class="btn btn-dark"> view</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+    {{-- Article Card Start --}}
+    <div class="container">
+        <div class="row main-row p-2 ">
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <div class="blog-img">
+                    <img class="img-fluid" src="https://www.1zoom.me/prev/297/296865.jpg" alt="">
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 mb-2  ">
+                        <ul class="list-group list-group-horizontal ul-cls">
+                            <li class="list-group-item">F</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    {{-- <========= Boosrap Card Section Ends   =========> --}}
 
-    {{-- <=====Boostrap Card image Zoomin Zoomout Starts=====> --}}
-    <div class="container py-md-5 container--narrow" style="margin-top: 8%;">
-        <div class="row justify-content-center">
-            <div class="card-deck">
-                <div class="card">
-                  <img class="card-img-top" src="https://www.1zoom.me/prev/297/296865.jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                  </div>
+            <div class="col-lg-8 col-md-12 col-sm-12">
+                <div class="blog-title">
+                    <h2>blog title</h2>
                 </div>
-                <div class="card">
-                  <img class="card-img-top" src="https://www.1zoom.me/prev/297/296865.jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                  </div>
+                <div class="blog-date">
+                    <span> friday</span>
+                    <span> 2 june 2020</span>
                 </div>
-                <div class="card">
-                  <img class="card-img-top" src="https://www.1zoom.me/prev/297/296865.jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                  </div>
+
+                <div class="blog-desc">
+                    <p>
+                        This is a wider card with supporting text below as a natural lead-in to additional content. This
+                        card has even longer content than the first to show that equal height action.
+                    </p>
                 </div>
-              </div>
+                <div class="blog-read-more">
+                    <a href="" class="btn btn-outline-dark">Read more</a>
+                </div>
+            </div>
         </div>
+
+        
     </div>
-    {{-- <=====Boostrap Card image Zoomin Zoomout Ends=====> --}}
+    {{-- Article Card Ends  --}}
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

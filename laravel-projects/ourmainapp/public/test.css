@@ -1,5 +1,5 @@
 /* <========= Boosrap Card Section Starts =====> */
-.cream-bg {
+/* .cream-bg {
   background-color: #ddd;
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -15,4 +15,29 @@
 .card p{
   line-height: 1.4rem;
   font-size: .9rem;
+} */
+
+
+.main-row{
+  margin: 8%;
+  background-color: white;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, .05);
+  border-radius: 0.5rem;
+}
+
+.blog-img > img{
+  width: 100%;
+  height: 100%;
+  transform: translateY(-30px);
+  object-fit: cover;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 8px 3px rgba(0, 0, 0, .3);
+}
+
+.blog-date span{
+  color: #962c51;
+}
+
+.ul-cls{
+  cursor: pointer;
 }

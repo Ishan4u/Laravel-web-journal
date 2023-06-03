@@ -21,39 +21,53 @@
         </div>
     @endunless
 
-    {{-- featured post start --}}
-    <div class="f-body">
-        <h2 class="text-center mb-4">The feature posts</h2>
-        <div class="wrapper">
-            <img class="feauture-img" src="https://www.capetours.co.uk/wp-content/uploads/2019/02/Mauritius-beach-800x400.jpg" alt="">
-            <div class="text-box">
-                <h2>Align image and text aside</h2>
-            <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-                Aldus PageMaker including versions of Lorem Ipsum.
-            </p>
+    {{-- <======= Article Card Start =======> --}}
+    <div class="container">
+        {{-- <h2 class="text-center mb-4 mt-4">The Future post</h2> --}}
+        <div class="row main-row p-2 ">
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <div class="blog-img">
+                    <img class="img-fluid" src="https://www.1zoom.me/prev/297/296865.jpg" alt="">
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 mb-2  ">
+                        <ul class="list-group list-group-horizontal ul-cls">
+                            <li class="list-group-item text-center">
+                                
+                                <img class="avatar-tiny" src="https://www.1zoom.me/prev/297/296865.jpg" /><span class="text-muted small">Written by Ishan </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8 col-md-12 col-sm-12">
+                <div class="blog-title">
+                    <h2>blog title</h2>
+                </div>
+                <div class="blog-date">
+                    <span> friday</span>
+                    <span> 2 june 2020</span>
+                </div>
+
+                <div class="blog-desc">
+                    <p>
+                        This is a wider card with supporting text below as a natural lead-in to additional content. This
+                        card has even longer content than the first to show that equal height action.
+                    </p>
+                </div>
+                <div class="blog-read-more">
+                    <a href="" class="btn btn-outline-dark">Read more</a>
+                </div>
             </div>
         </div>
 
-        <div class="wrapper">
-            <img class="feauture-img" src="https://www.capetours.co.uk/wp-content/uploads/2019/02/Mauritius-beach-800x400.jpg" alt="">
-            <div class="text-box">
-                <h2>Align image and text aside</h2>
-            <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-                Aldus PageMaker including versions of Lorem Ipsum.
-            </p>
-            </div>
-        </div>
+        
+
+        
+
+
     </div>
-    {{-- featured post End   --}}
+    {{-- <======= Article Card Ends========>  --}}
 
 </x-layout>
