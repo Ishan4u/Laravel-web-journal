@@ -522,7 +522,7 @@ footer.border-top.text-center.small.text-muted.py-3 {
 .main-row {
     margin-top: 5%;
     background-color: white;
-    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.2);
     border-radius: 0.5rem;
 }
 
@@ -534,7 +534,7 @@ footer.border-top.text-center.small.text-muted.py-3 {
     /* transform: translateY(-30px); */
     object-fit: cover;
     border-radius: 0.5rem;
-    box-shadow: 0 0 8px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 8px 3px rgba(0, 0, 0, 0.5);
 }
 
 .blog-date span {

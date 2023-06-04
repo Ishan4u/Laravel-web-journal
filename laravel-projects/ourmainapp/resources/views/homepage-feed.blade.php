@@ -20,16 +20,17 @@
             </div>
         </div>
     @endunless
-
+    
     {{-- <======= Article Card Start =======> --}}
-    <div class="container">
-        {{-- <h2 class="text-center mb-4 mt-4">The Future post</h2> --}}
+    <div class="container container--narrow">
+        <hr>
+        <h2 class="text-center mb-4 mt-4">The Future post</h2>
         <div class="row main-row p-2 ">
             <div class="col-lg-4 col-md-12 col-sm-12">
                 <div class="blog-img">
                     <img class="img-fluid" src="https://www.1zoom.me/prev/297/296865.jpg" alt="">
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-sm-12 mb-2  ">
                         <ul class="list-group list-group-horizontal ul-cls">
                             <li class="list-group-item text-center">
@@ -38,7 +39,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <div class="col-lg-8 col-md-12 col-sm-12">
