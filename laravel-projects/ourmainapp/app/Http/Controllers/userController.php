@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\OurExampleEvent;
+use App\Models\Post;
 use App\Models\Follow;
 use Illuminate\Http\Request;
+use App\Events\OurExampleEvent;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
@@ -64,8 +65,13 @@ class userController extends Controller
 
     public function showCorrectHomepage()
     {
+        $approvedPosts = Post::where([
+            ['isFeatured', true],
+            ['approval', true]
+        ])->get();
+
         if (auth()->check()) {
-            return view('homepage-feed', ['posts' => auth()->user()->feedPosts()->where('approval', 1)->latest()->get()]);
+            return view('homepage-feed', ['posts' => auth()->user()->feedPosts()->where('approval', 1)->latest()->get(), 'approvedPosts' => $approvedPosts]);
         } else {
             return view('homepage');
         }

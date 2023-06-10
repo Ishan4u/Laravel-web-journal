@@ -455,7 +455,7 @@ footer.border-top.text-center.small.text-muted.py-3 {
 
 /* Thumbnail css */
 .thumb {
-    width: 90%;
+    width: 70%;
     height: auto;
     display: flex;
     align-items: center;
@@ -463,7 +463,7 @@ footer.border-top.text-center.small.text-muted.py-3 {
     color: rgb(204, 204, 204);
     border-width: 2px;
     border-style: solid;
-    border-color: rgb(37, 109, 133);
+    /* border-color: rgb(37, 109, 133); */
     border-image: initial;
     margin: 0px auto 15px;
     padding: 7px;

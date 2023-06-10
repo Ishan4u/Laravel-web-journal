@@ -25,10 +25,11 @@
     <div class="container container--narrow">
         <hr>
         <h2 class="text-center mb-4 mt-4">The Future post</h2>
+        @foreach($approvedPosts as $approvedPost)
         <div class="row main-row p-2 ">
             <div class="col-lg-4 col-md-12 col-sm-12">
                 <div class="blog-img">
-                    <img class="img-fluid" src="https://www.1zoom.me/prev/297/296865.jpg" alt="">
+                    <img class="img-fluid" src="{{ $approvedPost->thumb }}" alt="">
                 </div>
                 {{-- <div class="row">
                     <div class="col-sm-12 mb-2  ">
@@ -44,24 +45,25 @@
 
             <div class="col-lg-8 col-md-12 col-sm-12">
                 <div class="blog-title">
-                    <h2>blog title</h2>
+                    <h2>{{ $approvedPost->title}}</h2>
                 </div>
                 <div class="blog-date">
-                    <span> friday</span>
-                    <span> 2 june 2020</span>
+                    {{-- <span> friday</span> --}}
+                    <span> {{ $approvedPost->created_at->format('n/j/Y') }}</span>
                 </div>
 
                 <div class="blog-desc">
                     <p>
-                        This is a wider card with supporting text below as a natural lead-in to additional content. This
-                        card has even longer content than the first to show that equal height action.
+                        {{-- {{ Str::words($approvedPost->body, 30) }} --}}
+                        {!! Str::words($approvedPost->body,30) !!}
                     </p>
                 </div>
                 <div class="blog-read-more">
-                    <a href="" class="btn btn-outline-dark">Read more</a>
+                    <a href="/post/{{ $approvedPost->id }}" class="btn btn-outline-dark">Read more</a>
                 </div>
             </div>
         </div>
+        @endforeach
 
         
 
