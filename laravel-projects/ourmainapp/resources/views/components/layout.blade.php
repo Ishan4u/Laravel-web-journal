@@ -5,6 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    {{-- CSRF AJAX --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>SLIATE</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
@@ -19,26 +22,26 @@
 
     {{-- Start post image upload css --}}
     <style>
-      .image-preview{
-        width: 100%;
-        height: 320px;
-        border: 2px solid #dddddd;
-        margin-top: 15px;
-        margin-bottom: 15px;
-        
-        /* Default text */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        color: #cccccc;
-      }
+        .image-preview {
+            width: 100%;
+            height: 320px;
+            border: 2px solid #dddddd;
+            margin-top: 15px;
+            margin-bottom: 15px;
 
-      .image-preview__image{
-        display: none;
-        width: 100%;
-        height: 100%;
-      }
+            /* Default text */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #cccccc;
+        }
+
+        .image-preview__image {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
     </style>
     {{-- Ends post image upload css  --}}
 
@@ -121,7 +124,7 @@
             class="chat-wrapper shadow border-top border-left border-right"> </div>
     @endauth
 
-    
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -135,6 +138,52 @@
     <script>
         $('[data-toggle="tooltip"]').tooltip()
     </script>
+
+    {{-- JQUERY CDN --}}
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() { //jqdoc
+
+            // on event clic
+            $(document).on('click', '.btn_feature', function(e) {
+                e.preventDefault();
+
+                // alert("hello");
+
+                var button = $(this);
+                // get all value in one variable
+                var data = {
+                    'post_id': $(this).data('post-id'),
+                    'status': $(this).data('status')
+                }
+
+                // console.log(data);
+
+                //CSRF
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    type: "POST",
+                    url: "/update-featured",
+                    data: data,
+                    dataType: "json",
+                    success: function(response) {
+                        console.log(response);
+
+                    
+
+                    }
+                });
+
+            });
+        });
+    </script>
+
 </body>
 
 </html>

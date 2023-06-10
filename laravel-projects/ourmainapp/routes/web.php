@@ -55,7 +55,8 @@ Route::get('/changeStatus', [AdminController::class, 'changeStatus']);
 // test page route
 Route::get('/test', [PostController::class, 'showTest']);
 
-
+// update-featured AJAX route
+Route::post('/update-featured', [PostController::class, 'updateFeatured']);
 
 // STEP 1
 // chat routes

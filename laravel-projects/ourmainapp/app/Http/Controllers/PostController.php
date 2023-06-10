@@ -121,4 +121,21 @@ class PostController extends Controller
     public function showTest(){
         return view('test');
     }
+
+    //update featured AJAX route
+    public function updateFeatured(Request $request) {
+        
+        $postId = $request->input('post_id');
+        $status = $request->input('status');
+
+        $post = Post::find($postId);
+        $post->isFeatured = $status;
+        $post->save();
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Featured status updated successfuly',
+            'isFeatured' => $status,
+        ]);
+    }
 }

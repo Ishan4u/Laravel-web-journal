@@ -2,13 +2,24 @@
     <div class="container py-md-5 container--narrow">
 
         <div class="d-flex justify-content-between">
-            <img class="thumb" src="{{$post->thumb}}" alt="">
+            <img class="thumb" src="{{ $post->thumb }}" alt="">
         </div>
-        
+
         <div class="d-flex justify-content-between">
             <h2>{{ $post->title }} </h2>
             @can('update', $post)
                 <span class="pt-2">
+                    {{-- Start - Featured buttton --}}
+
+                    <button data-post-id="{{ $post->id }}" data-status="{{ $post->isFeatured == '0' ? '1' : '0' }}"
+                        class="delete-post-button {{ $post->isFeatured == '0' ? 'text-success' : 'text-warning' }} mr-2 btn_feature"
+                        data-toggle="tooltip" data-placement="top"
+                        title="{{ $post->isFeatured == '0' ? 'Featured' : 'Not Featured' }}">
+                        <i class="{{ $post->isFeatured == '0' ? 'far fa-star' : 'fas fa-star' }}"></i>
+                    </button>
+
+                    {{-- End - Featured buttton   --}}
+
                     <a href="/post/{{ $post->id }}/edit" class="text-primary mr-2" data-toggle="tooltip"
                         data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
                     <form class="delete-post-form d-inline" action="/post/{{ $post->id }}" method="POST">
