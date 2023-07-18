@@ -95,7 +95,7 @@ class PostController extends Controller
 
         $post_id = $newPost->id; // STEP 3
         $imgName = $post_id . '-' . uniqid() . '.jpg';
-        $imgData = Image::make($request->file('thumb'))->fit(600, 400)->encode('jpg'); // STEP 2
+        $imgData = Image::make($request->file('thumb'))->fit(682, 369)->encode('jpg'); // STEP 2
         Storage::put('public/thumb/' . $imgName, $imgData); // STEP 4
 
         $oldThumb = $newPost->thumb;

@@ -11,6 +11,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User; //Models perform crud oparation and relationships
 
+
 class userController extends Controller
 {
 
@@ -70,8 +71,11 @@ class userController extends Controller
             ['approval', true]
         ])->get();
 
+        
+        
+
         if (auth()->check()) {
-            return view('homepage-feed', ['posts' => auth()->user()->feedPosts()->where('approval', 1)->latest()->get(), 'approvedPosts' => $approvedPosts]);
+            return view('homepage-feed', [  'posts' => auth()->user()->feedPosts()->where('approval', 1)->latest()->paginate(4), 'approvedPosts' => $approvedPosts]);
         } else {
             return view('homepage');
         }

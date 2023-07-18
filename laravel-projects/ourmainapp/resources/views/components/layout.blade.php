@@ -18,10 +18,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet" />
+
+        {{-- <link rel="stylesheet" href="assets/style.css"> --}}
     {{-- <link rel="stylesheet" href="/main.css" /> --}}
 
     {{-- Start post image upload css --}}
     <style>
+        body{
+            /* background-color: #bcd0e652; */
+        }
         .image-preview {
             width: 100%;
             height: 320px;
@@ -64,7 +69,7 @@
                     <a href="/profile/{{ auth()->user()->username }}" class="mr-2"><img title="My Profile"
                             data-toggle="tooltip" data-placement="bottom"
                             style="width: 32px; height: 32px; border-radius: 16px" src="{{ auth()->user()->avatar }}" /></a>
-                    <a class="btn btn-sm btn-success mr-2" href="/create-post">Create Post</a>
+                    <a class="btn btn-sm btn-success mr-2" href="/create-post"><i class="fas fa-edit"></i> Write Article</a>
                     <form action="/logout" method="POST" class="d-inline">
                         @csrf
                         <button class="btn btn-sm btn-secondary">Sign Out</button>

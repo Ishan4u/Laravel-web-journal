@@ -1,9 +1,22 @@
 <x-layout>
+
+    <div class="banner">
+        <div class="banner-bg">
+            <img src="{{ $post->thumb }}" alt="">
+        </div>
+    <div class="banner-img">
+        <img src="{{ $post->thumb }}" alt="">
+    </div>
+    </div>
+    
+
     <div class="container py-md-5 container--narrow">
 
-        <div class="d-flex justify-content-between">
+
+
+        {{-- <div class="d-flex justify-content-between">
             <img class="thumb" src="{{ $post->thumb }}" alt="">
-        </div>
+        </div> --}}
 
         <div class="d-flex justify-content-between">
             <h2>{{ $post->title }} </h2>
@@ -70,6 +83,10 @@
                 @endauth
             </div>
         </div> {{-- Author profile Ends --}}
+
+
+
+
 
 
         <div class="body-content">

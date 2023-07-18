@@ -1,76 +1,164 @@
 <x-layout>
-    <div class="container py-md-5 container--narrow">
-        @unless ($posts->isEmpty())
-            <h2 class="text-center mb-4">The latest posts from those you follow</h2>
-            <div class="list-group">
-                @foreach ($posts as $post)
-                    <a href="/post/{{ $post->id }}" class="list-group-item list-group-item-action">
-                        <img class="avatar-tiny" src="{{ $post->user->avatar }}" />
-                        <strong>{{ $post->title }} </strong> <span class="text-muted small">by {{ $post->user->username }}
-                            on {{ $post->created_at->format('n/j/Y') }} </span>
-                    </a>
-                @endforeach
+
+    <!-- <============ Content section Starts ==========> -->
+    <div class="h-container">
+        <!-- <========= left-sidebar starts =========> -->
+        <div class="left-sidebar">
+            <div class="imp-links">
+                <a href="/profile/{{ auth()->user()->username }}"><img style="border-radius: 20px;"
+                        src="{{ auth()->user()->avatar }}"> My Profile</a>
+                <a href="#"><img src="images/news.png"> Feautured articles </a>
+                <a href="#"><img src="images/friends.png"> Followers</a>
+                {{-- <a href="#"><img src="images/marketplace.png" > Marketplace</a> --}}
+                <a href="#"><img src="images/news.png"> HNDIT</a>
+                <a href="#">See more</a>
             </div>
-        @else
-            <div class="text-center">
-                <h2>Hello <strong> {{ auth()->user()->username }} </strong>, your feed is empty.</h2>
-                <p class="lead text-muted">Your feed displays the latest posts from the people you follow. If you don&rsquo;t
-                    have any friends to follow that&rsquo;s okay; you can use the &ldquo;Search&rdquo; feature in the top
-                    menu bar to find content written by people with similar interests and then follow them.</p>
+
+            <div class="shortcut-links">
+                <p>Your reading list</p>
+                <a href="#"><img src="images/shortcut-1.png">Web developers</a>
+                <a href="#"><img src="images/shortcut-2.png">Web design course</a>
+                <a href="#"><img src="images/shortcut-3.png">Full stack development </a>
+                <a href="#"><img src="images/shortcut-4.png">Web developers</a>
             </div>
         </div>
-    @endunless
-    
-    {{-- <======= Article Card Start =======> --}}
-    <div class="container container--narrow">
-        <hr>
-        <h2 class="text-center mb-4 mt-4">The Future post</h2>
-        @foreach($approvedPosts as $approvedPost)
-        <div class="row main-row p-2 ">
-            <div class="col-lg-4 col-md-12 col-sm-12">
-                <div class="blog-img">
-                    <img class="img-fluid" src="{{ $approvedPost->thumb }}" alt="">
-                </div>
-                {{-- <div class="row">
-                    <div class="col-sm-12 mb-2  ">
-                        <ul class="list-group list-group-horizontal ul-cls">
-                            <li class="list-group-item text-center">
-                                
-                                <img class="avatar-tiny" src="https://www.1zoom.me/prev/297/296865.jpg" /><span class="text-muted small">Written by Ishan </span>
-                            </li>
-                        </ul>
+        <!-- <========= left-sidebar ends =========> -->
+
+        <!-- <========= main-content starts =========> -->
+        <div class="main-content">
+
+            
+
+
+            @unless ($posts->isEmpty())
+                <!-- <========= Post starts =========> -->
+            <div class="posts">
+                @foreach($posts as $post)
+                <div class="post-card"> {{-- duplicate --}}
+                    <div class="post-card-text">
+                        <small><img class="author-img"
+                                src="{{ $post->user->avatar }}"
+                                alt=""><span class="author">{{$post->user->username}}</span><span class="follow">&#x2022;
+                                &nbsp;follow</span></small>
+
+                        <h3>{{$post->title}}</h3>
+                        <p class="desc">
+                            @php
+                                $desc = Illuminate\Mail\Markdown::parse(Str::limit($post->body, 200))
+                            @endphp
+                            {{ strip_tags($desc) }}
+                            
+                        </p>
+                        <a class="btn-read" href="/post/{{ $post->id }}">Read More</a>
                     </div>
-                </div> --}}
-            </div>
 
-            <div class="col-lg-8 col-md-12 col-sm-12">
-                <div class="blog-title">
-                    <h2>{{ $approvedPost->title}}</h2>
+                    <div class="post-card-photo">
+                        <img class="post-card-img" src="{{ $post->thumb }}" alt="">
+                    </div>
                 </div>
-                <div class="blog-date">
-                    {{-- <span> friday</span> --}}
-                    <span> {{ $approvedPost->created_at->format('n/j/Y') }}</span>
-                </div>
-
-                <div class="blog-desc">
-                    <p>
-                        {{-- {{ Str::words($approvedPost->body, 30) }} --}}
-                        {!! Str::words($approvedPost->body,30) !!}
-                    </p>
-                </div>
-                <div class="blog-read-more">
-                    <a href="/post/{{ $approvedPost->id }}" class="btn btn-outline-dark">Read more</a>
-                </div>
+                @endforeach
+                
             </div>
+            <!-- <=========== Post Ends ==========> -->
+            @else
+            <!-- <========= Empty Post starts =========> -->
+<div class="posts">
+    <div class="post-card"> {{-- duplicate --}}
+
+        <div class="post-card-text">
+           
+            <h3>Hello {{ auth()->user()->username }}, your feed is empty.</h3>
+            <p class="desc">The feed shows posts from people you follow. If you don't have friends to follow, use search to find and follow users with similar interests. You can also check featured posts below.</p>
+            
         </div>
-        @endforeach
 
         
+    </div>
+</div>
 
-        
+<!-- <================== Empty Post Ends ==================> -->
+            @endunless
+            
 
+
+        </div>
+        <!-- <========= main-content ends =========> -->
+
+        <!-- <========= right-sidebar starts =========> -->
+        <div class="right-sidebar">
+
+            <div class="sidebar-title">
+                <h4>Newest shares you follow</h4>
+                <a href="#">See All</a>
+            </div>
+
+            <!-- Event -->
+            @foreach ($posts as $post)
+                <div class="event">
+                    <div class="left-event">
+                        {{-- <h3>18</h3> --}}
+                        <a href="/profile/{{ $post->user->username }}"><img class="le-img"
+                                src="{{ $post->user->avatar }}"></a>
+                        <span>{{ $post->user->username }} </span>
+                    </div>
+                    <div class="right-event">
+                        <a style="color: #626262;" href="/post/{{ $post->id }}">
+                            <h4 style="font-weight: 600;font-size: 14px;">{{ $post->title }}</h4>
+                        </a>
+                        <p>{{ $post->created_at->format('n/j/Y') }}</p>
+                        <a href="/post/{{ $post->id }}">Read Now </a>
+                    </div>
+                </div>
+            @endforeach
+
+            <div>
+                {{ $posts->links() }}
+            </div>
+
+            {{-- <div class="event">
+                <div class="left-event">
+                    <h3>18</h3>
+                    <span>March</span>
+                </div>
+                <div class="right-event">
+                    <h4>Social Media</h4>
+                    <p>Galewela</p>
+                    <a href="#">More info </a>
+                </div>
+            </div> --}}
+
+            <!-- Advertisment start -->
+            {{-- <div class="sidebar-title">
+                <h4>Advertisment</h4>
+                <a href="#">Close</a>
+            </div>
+            <img src="images/advertisement.png" class="sidebar-ads"> --}}
+            <!-- Advertisment Ends -->
+
+            <!-- Conversation  -->
+            {{-- <div class="sidebar-title">
+                <h4>Conversation</h4>
+                <a href="#">Hide chat</a>
+            </div>
+            <div class="online-list">
+                <div class="online">
+                    <img src="images/member-1.png">
+                </div>
+                <p>Ishan</p>
+            </div>
+
+            <div class="online-list">
+                <div class="online">
+                    <img src="images/member-1.png">
+                </div>
+                <p>Ishan</p>
+            </div> --}}
+            <!-- End Conversation  -->
+
+        </div>
+        <!-- <========= right-sidebar ends =========> -->
 
     </div>
-    {{-- <======= Article Card Ends========>  --}}
+    <!-- <============ Content section Starts ==========> -->
 
 </x-layout>
