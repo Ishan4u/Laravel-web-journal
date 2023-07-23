@@ -66,14 +66,17 @@ class userController extends Controller
     {
         $this->getSharedData($user);
 
-        return view('profile-followers', ['posts' => $user->posts()->latest()->get()]);
+        //test retrun raw json 
+        // return $user->followers()->latest()->get();
+
+        return view('profile-followers', ['followers' => $user->followers()->latest()->get()]);
     }
 
     public function profileFollowing(User $user)
     {
         $this->getSharedData($user);
 
-        return view('profile-following', ['posts' => $user->posts()->latest()->get()]);
+        return view('profile-following', ['following' => $user->followingTheseUsers()->latest()->get()]);
     }
 
     public function logout()

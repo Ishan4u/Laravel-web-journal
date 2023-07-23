@@ -26,8 +26,9 @@ class User extends Authenticatable
         'password',
     ];
 
-    protected function avatar() : Attribute {
-        return Attribute::make(get: function($value) {
+    protected function avatar(): Attribute
+    {
+        return Attribute::make(get: function ($value) {
             return $value ? '/storage/avatars/' . $value : '/fallback-avatar.jpg'; //ternary operator 
         });
     }
@@ -51,11 +52,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function posts() {
+    /* <=== local_key is the primary key of your table.
+     * You only need to specify it if your primary key is not called id. ===>
+     */
+
+     //One to Many relationship
+    public function followers(){
+        return $this->hasMany(Follow::class,'followeduser');
+    }
+
+    public function followingTheseUsers(){
+        return $this->hasMany(Follow::class, 'user_id');
+    }
+
+    public function posts()
+    {
         return $this->hasmany(Post::class, 'user_id');
     }
 
-    public function feedPosts() {
-        return $this->hasManyThrough(Post::class,Follow::class,'user_id', 'user_id', 'id','followeduser');
+    public function feedPosts()
+    {
+        return $this->hasManyThrough(Post::class, Follow::class, 'user_id', 'user_id', 'id', 'followeduser');
     }
 }

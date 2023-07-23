@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Parsedown;
 use App\Models\Post;
 use App\Models\Follow;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
+use League\HTMLToMarkdown\HtmlConverter;
 
 class PostController extends Controller
 {
@@ -26,15 +28,17 @@ class PostController extends Controller
             'thumb' => 'nullable|image|max:10000' // STEP 1
         ]);
 
+        
         $incomingFields['title'] = strip_tags($incomingFields['title']);
-        $incomingFields['body'] = strip_tags($incomingFields['body']);
+        // $incomingFields['body'] = strip_tags($incomingFields['body'],"<style><p><ul><ol><li><strong><em><h1><h2><h3><h3><br><table><tr><th><td>");
+        
 
         $post->update($incomingFields);
 
         if ($request->hasFile('thumb')) { // Check if a new image is selected
             $post_id = $post->id;
             $imgName = $post_id . '-' . uniqid() . '.jpg';
-            $imgData = Image::make($request->file('thumb'))->fit(600, 400)->encode('jpg');
+            $imgData = Image::make($request->file('thumb'))->fit(682, 369)->encode('jpg');
             Storage::put('public/thumb/' . $imgName, $imgData);
 
             $oldThumb = $post->thumb;
@@ -73,7 +77,12 @@ class PostController extends Controller
             $currentlyFollowing = Follow::where([['user_id', '=', auth()->user()->id], ['followeduser', '=', $post->user_id]])->count();
         }
 
-        $post['body'] = strip_tags(Str::markdown($post->body), '<p><ul><ol><li><strong><em><h3><br>');
+        // parse markdown to html
+        // $parsedown = new Parsedown();
+        // parsedown->text($post->body)
+
+        // $post['body'] = strip_tags(Str::markdown($post->body), '<style><p><ul><ol><li><strong><em><h3><br><table><tr><th><td>');
+        $post['body'] = $post->body;
         return view('single-post', ['post' => $post, 'currentlyFollowing' => $currentlyFollowing]);
     }
 
@@ -88,7 +97,7 @@ class PostController extends Controller
 
 
         $incomingFields['title'] = strip_tags($incomingFields['title']);
-        $incomingFields['body'] = strip_tags($incomingFields['body']);
+        // $incomingFields['body'] = strip_tags($incomingFields['body'],"<table><th><tr><td>");
         $incomingFields['user_id'] = auth()->id();
 
         $newPost = Post::create($incomingFields);
