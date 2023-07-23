@@ -7,6 +7,7 @@ use App\Models\Follow;
 use Illuminate\Http\Request;
 use App\Events\OurExampleEvent;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\View;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User; //Models perform crud oparation and relationships
@@ -44,37 +45,35 @@ class userController extends Controller
         return view('avatar-form');
     }
 
-    public function profile(User $user)
+    // function for get shared data in blade template
+    private function getSharedData($user)
     {
         $currentlyFollowing = 0;
 
         if (auth()->check()) {
             $currentlyFollowing = Follow::where([['user_id', '=', auth()->user()->id], ['followeduser', '=', $user->id]])->count();
         }
+        View::share('sharedData', ['currentlyFollowing' => $currentlyFollowing, 'avatar' => $user->avatar, 'username' => $user->username, 'postCount' => $user->posts()->count()]);
+    }
+    public function profile(User $user)
+    {
+        $this->getSharedData($user);
 
-        return view('profile-posts', ['currentlyFollowing' => $currentlyFollowing, 'avatar' => $user->avatar, 'username' => $user->username, 'posts' => $user->posts()->latest()->get(), 'postCount' => $user->posts()->count()]);
+        return view('profile-posts', ['posts' => $user->posts()->latest()->get()]);
     }
 
     public function profileFollowers(User $user)
     {
-        $currentlyFollowing = 0;
+        $this->getSharedData($user);
 
-        if (auth()->check()) {
-            $currentlyFollowing = Follow::where([['user_id', '=', auth()->user()->id], ['followeduser', '=', $user->id]])->count();
-        }
-
-        return view('profile-followers', ['currentlyFollowing' => $currentlyFollowing, 'avatar' => $user->avatar, 'username' => $user->username, 'posts' => $user->posts()->latest()->get(), 'postCount' => $user->posts()->count()]);
+        return view('profile-followers', ['posts' => $user->posts()->latest()->get()]);
     }
 
     public function profileFollowing(User $user)
     {
-        $currentlyFollowing = 0;
+        $this->getSharedData($user);
 
-        if (auth()->check()) {
-            $currentlyFollowing = Follow::where([['user_id', '=', auth()->user()->id], ['followeduser', '=', $user->id]])->count();
-        }
-
-        return view('profile-following', ['currentlyFollowing' => $currentlyFollowing, 'avatar' => $user->avatar, 'username' => $user->username, 'posts' => $user->posts()->latest()->get(), 'postCount' => $user->posts()->count()]);
+        return view('profile-following', ['posts' => $user->posts()->latest()->get()]);
     }
 
     public function logout()
@@ -95,10 +94,10 @@ class userController extends Controller
         // if (auth()->check()) {
         //     $currentlyFollowing = Follow::where([['user_id', '=', auth()->user()->id], ['followeduser', '=', $post->user_id]])->count();
         // }
-        
+
 
         if (auth()->check()) {
-            return view('homepage-feed', [  'posts' => auth()->user()->feedPosts()->where('approval', 1)->latest()->paginate(4), 'approvedPosts' => $approvedPosts]);
+            return view('homepage-feed', ['posts' => auth()->user()->feedPosts()->where('approval', 1)->latest()->paginate(4), 'approvedPosts' => $approvedPosts]);
         } else {
             return view('homepage');
         }
