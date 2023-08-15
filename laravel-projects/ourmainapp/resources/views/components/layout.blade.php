@@ -19,14 +19,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet" />
 
-        {{-- <link rel="stylesheet" href="assets/style.css"> --}}
+
     {{-- <link rel="stylesheet" href="/main.css" /> --}}
+
+    {{-- ckeditor path --}}
+    <script src="/assets/vendor/ckeditor5/build/ckeditor.js"></script>
+    <link rel="stylesheet" href="/assets/ck-style.css">
+
+
+
 
     {{-- Start post image upload css --}}
     <style>
-        body{
-            /* background-color: #bcd0e652; */
+        .ck-editor__editable_inline {
+            min-height: 400px;
         }
+
         .image-preview {
             width: 100%;
             height: 320px;
@@ -117,6 +125,21 @@
 
     {{ $slot }}
 
+    <!-- Display message sweet alert ------->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session()->has('success-popup'))
+        <script>
+            Swal.fire({
+                /* position: 'top-end', */
+                icon: 'success',
+                title: '{{ session('success-popup') }}',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    @endif
+    <!-- Ends Display message sweet alert -->
+
     <!-- footer begins -->
     <footer class="border-top text-center small text-muted py-3">
         <p class="m-0">Copyright &copy; {{ date('Y') }} <a href="/" class="text-muted">Ishan</a>. All
@@ -148,6 +171,7 @@
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script>
+        // featured btn in single-post
         $(document).ready(function() { //jqdoc
 
             // on event clic
@@ -180,14 +204,15 @@
                     success: function(response) {
                         console.log(response);
 
-                    
+
 
                     }
                 });
 
             });
         });
-    </script>
+    </script>{{-- // Ends featured btn in single-post --}}
+
 
 </body>
 

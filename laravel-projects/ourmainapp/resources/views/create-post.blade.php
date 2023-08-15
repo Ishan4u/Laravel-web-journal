@@ -36,6 +36,15 @@
         </form>
     </div>
 
+    <!-- <========= CK Editor script ============> -->
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#post-body' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script><!-- <========= CK Editor script Ends ===========> -->
+
     {{-- Start post image upload js --}}
     <script>
         const thumb = document.getElementById("thumb");

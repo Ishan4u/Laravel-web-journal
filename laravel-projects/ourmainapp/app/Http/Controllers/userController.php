@@ -89,18 +89,31 @@ class userController extends Controller
 
     public function showCorrectHomepage()
     {
-        $approvedPosts = Post::where([
-            ['isFeatured', true],
-            ['approval', true]
-        ])->get();
-
+        
         // if (auth()->check()) {
         //     $currentlyFollowing = Follow::where([['user_id', '=', auth()->user()->id], ['followeduser', '=', $post->user_id]])->count();
         // }
 
 
         if (auth()->check()) {
-            return view('homepage-feed', ['posts' => auth()->user()->feedPosts()->where('approval', 1)->latest()->paginate(4), 'approvedPosts' => $approvedPosts]);
+            return view('homepage-feed', ['posts' => auth()->user()->feedPosts()->where('approval', 1)->latest()->get()]);
+        } else {
+            return view('homepage');
+        }
+    }
+    
+
+    public function showFeauturedPosts()
+    {
+        $feauturedPosts = Post::where([
+            ['isFeatured', true],
+            ['approval', true]
+        ])->get();
+
+
+            
+        if (auth()->check()) {
+            return view('homepage-feautured', [ 'feauturedPosts' => $feauturedPosts]);
         } else {
             return view('homepage');
         }

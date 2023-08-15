@@ -151,3 +151,78 @@
     </div>
 
 </x-layout>
+
+
+<!-- <========= right-sidebar starts =========> -->
+<div class="right-sidebar">
+
+    <div class="sidebar-title">
+        <h4>Newest shares you follow</h4>
+        <a href="#">See All</a>
+    </div>
+
+    <!-- Event -->
+    @foreach ($posts as $post)
+        <div class="event">
+            <div class="left-event">
+                {{-- <h3>18</h3> --}}
+                <a href="/profile/{{ $post->user->username }}"><img class="le-img"
+                        src="{{ $post->user->avatar }}"></a>
+                <span>{{ $post->user->username }} </span>
+            </div>
+            <div class="right-event">
+                <a style="color: #626262;" href="/post/{{ $post->id }}">
+                    <h4 style="font-weight: 600;font-size: 14px;">{{ $post->title }}</h4>
+                </a>
+                <p>{{ $post->created_at->format('n/j/Y') }}</p>
+                <a href="/post/{{ $post->id }}">Read Now </a>
+            </div>
+        </div>
+    @endforeach
+
+    <div>
+        {{ $posts->links() }}
+    </div>
+
+    {{-- <div class="event">
+        <div class="left-event">
+            <h3>18</h3>
+            <span>March</span>
+        </div>
+        <div class="right-event">
+            <h4>Social Media</h4>
+            <p>Galewela</p>
+            <a href="#">More info </a>
+        </div>
+    </div> --}}
+
+    <!-- Advertisment start -->
+    {{-- <div class="sidebar-title">
+        <h4>Advertisment</h4>
+        <a href="#">Close</a>
+    </div>
+    <img src="images/advertisement.png" class="sidebar-ads"> --}}
+    <!-- Advertisment Ends -->
+
+    <!-- Conversation  -->
+    {{-- <div class="sidebar-title">
+        <h4>Conversation</h4>
+        <a href="#">Hide chat</a>
+    </div>
+    <div class="online-list">
+        <div class="online">
+            <img src="images/member-1.png">
+        </div>
+        <p>Ishan</p>
+    </div>
+
+    <div class="online-list">
+        <div class="online">
+            <img src="images/member-1.png">
+        </div>
+        <p>Ishan</p>
+    </div> --}}
+    <!-- End Conversation  -->
+
+</div>
+<!-- <========= right-sidebar ends =========> -->

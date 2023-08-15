@@ -4,11 +4,11 @@
         <div class="banner-bg">
             <img src="{{ $post->thumb }}" alt="">
         </div>
-    <div class="banner-img">
-        <img src="{{ $post->thumb }}" alt="">
+        <div class="banner-img">
+            <img src="{{ $post->thumb }}" alt="">
+        </div>
     </div>
-    </div>
-    
+
 
     <div class="container py-md-5 container--narrow">
 
@@ -91,6 +91,7 @@
 
         <div class="body-content">
             {!! $post->body !!}
+
         </div>
     </div>
 </x-layout>

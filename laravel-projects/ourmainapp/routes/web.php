@@ -25,6 +25,7 @@ Route::get('/admin-only', [AdminController::class, "showAdminpage"])->middleware
 
 // User related routes
 Route::get('/', [userController::class, "showCorrectHomepage"])->name('login');
+Route::get('/feautured', [userController::class, "showFeauturedPosts"])->name('login');
 Route::post('/register', [userController::class, 'register'])->middleware('guest');
 Route::post('/login', [userController::class, 'login'])->middleware('guest');
 Route::post('/logout', [userController::class, 'logout'])->middleware('mustBeLoggedIn');
