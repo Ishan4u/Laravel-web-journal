@@ -52,6 +52,10 @@ Route::get('/profile/{user:username}/followers', [userController::class, 'profil
 Route::get('/profile/{user:username}/following', [userController::class, 'profileFollowing']);
 // Route::get('/admin-profile/{user:username}', [userController::class, 'adminprofileView']);
 
+Route::get('/profile/{user:username}/raw', [userController::class, 'profileRaw']);
+Route::get('/profile/{user:username}/followers/raw', [userController::class, 'profileFollowersRaw']);
+Route::get('/profile/{user:username}/following/raw', [userController::class, 'profileFollowingRaw']);
+
 //toggle
 Route::get('/changeStatus', [AdminController::class, 'changeStatus']);
 
