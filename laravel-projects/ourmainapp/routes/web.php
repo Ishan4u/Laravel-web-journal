@@ -52,9 +52,14 @@ Route::get('/profile/{user:username}/followers', [userController::class, 'profil
 Route::get('/profile/{user:username}/following', [userController::class, 'profileFollowing']);
 // Route::get('/admin-profile/{user:username}', [userController::class, 'adminprofileView']);
 
-Route::get('/profile/{user:username}/raw', [userController::class, 'profileRaw']);
-Route::get('/profile/{user:username}/followers/raw', [userController::class, 'profileFollowersRaw']);
-Route::get('/profile/{user:username}/following/raw', [userController::class, 'profileFollowingRaw']);
+//Group routes and apply caching middleware for raw
+Route::middleware('cache.headers:public;max_age=20;etag;')->group(function(){
+    Route::get('/profile/{user:username}/raw', [userController::class, 'profileRaw']);
+    Route::get('/profile/{user:username}/followers/raw', [userController::class, 'profileFollowersRaw']);
+    Route::get('/profile/{user:username}/following/raw', [userController::class, 'profileFollowingRaw']);
+    
+});
+
 
 //toggle
 Route::get('/changeStatus', [AdminController::class, 'changeStatus']);
