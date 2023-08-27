@@ -17,7 +17,7 @@ echo 'My name is ' . $name . " that is truth. ";
 - install extension `php namespace resolver`
 
 # Run php on browser (testing)
-*command:*  
+command:  
 `php -S localhost:8000`
 
 # Composer
@@ -25,12 +25,12 @@ echo 'My name is ' . $name . " that is truth. ";
 - A Dependency Manager for PHP
 - pull all over dependencies  
 
-*install:*  
+install:  
 ```
 brew install composer
 ```  
 
-## use composer
+use composer: 
 `composer require cocur/slugify`  
 
 > Reference  
@@ -50,17 +50,15 @@ brew install composer
 3. Accessing a constant of a class: `ClassName::CONSTANT_NAME`
 
 # HTTP request methods 
-- GET
-> This method is used to request a resource from a web server
-- POST
-> This method is used to submit data to be processed by a web server
+- GET : *This method is used to request a resource from a web server*
+- POST: *This method is used to submit data to be processed by a web server*
 - PUT
 - DELETE
 - PATCH
 
 # Laravel
-> Create project:  
-> `composer create-project AuthorName/nameOftheProject nameOFfolder`
+Create project:  
+`composer create-project AuthorName/nameOftheProject nameOFfolder`
 
 *Example syntex:*
 ```
