@@ -329,7 +329,20 @@ php artisan migrate
 - 
 2. profile-posts.blade.php
 
+
+# Sending Email
+1. Setup Mailtrap account (Email Testing Tool)
+2. Configure env file
+- MAIL_MAILER, MAIL_HOST etc..
+3. Create blade view
+- for sending email design 
+> create a new email class for sending emails (className = NewPostEmail)  
+```
+php artisan make:mail NewPostEmail
+```
+
 # Commit References
 > Conect html frontend form to Database Step2  
 - intro about validate
 - intro about Models
+
