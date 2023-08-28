@@ -331,10 +331,10 @@ php artisan migrate
 
 
 # Sending Email
-1. Setup Mailtrap account (Email Testing Tool)
-2. Configure env file
+#### 1. Setup Mailtrap account (Email Testing Tool)
+#### 2. Configure env file
 - MAIL_MAILER, MAIL_HOST etc..
-3. Create blade view
+#### 3. Create blade view
 - for sending email design 
 > create a new email class for sending emails (className = NewPostEmail)  
 ```
