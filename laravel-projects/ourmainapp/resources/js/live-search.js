@@ -24,9 +24,9 @@ export default class Search {
       this.openOverlay()
     })
     document.addEventListener("keydown", e => {
-      if (e.key.toUpperCase() == "S" && !this.overlay.classList.contains("search-overlay--visible") && document.activeElement.nodeName != "INPUT" && document.activeElement.nodeName != "TEXTAREA") {
-        this.openOverlay()
-      }
+      // if (e.key.toUpperCase() == "S" && !this.overlay.classList.contains("search-overlay--visible") && document.activeElement.nodeName != "INPUT" && document.activeElement.nodeName != "TEXTAREA") {
+      //   this.openOverlay()
+      // }
 
       if (e.key == "Escape" && this.overlay.classList.contains("search-overlay--visible")) {
         this.closeOverlay()
